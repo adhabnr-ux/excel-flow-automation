@@ -19,7 +19,7 @@
       "type": "Poll",
       "is_test_poll": true,
       "content": "When someone sends you an Excel file, what's the first thing you actually do?\n\nA) Just open and start working\nB) Check formulas first\nC) Look for docs that don't exist\nD) Save a backup first\n\nDrop the worst thing you've ever found in someone else's file.",
-      "first_comment": "Bonus — I covered the four major Excel computer languages and which one to use when in this week's edition with Mike \"excelisfun\" Girvin (3,900+ YouTube tutorials).\n[Substack URL for Edition #28]\nNo email required.",
+      "first_comment": "Bonus — I covered the four major Excel computer languages and which one to use when in this week's edition with Mike \"excelisfun\" Girvin (3,900+ YouTube tutorials).\nhttps://rileystream.substack.com/p/the-four-languages-of-modern-excel\nNo email required.",
       "first_comment_time_display": "7:31 AM",
       "carousel_spec": null,
       "notes": "TEST poll. Match: Edition #28."
@@ -133,7 +133,7 @@
       "type": "Poll",
       "is_test_poll": true,
       "content": "What Excel skill does your team most often ask you to help with?\n\nA) Basic formulas\nB) Pivot tables / data analysis\nC) Formatting and presentation\nD) Not breaking others' files\n\nDrop your answer and tell me if you're the Excel person everyone comes to or still trying to get there.",
-      "first_comment": "Bonus — Mynda Treacy (Microsoft Excel MVP) had the sharpest take on this in our Q&A. Most Excel pros build on broken foundations and never realize it.\n[Substack URL for Edition #25]\nDirect read, no email gate.",
+      "first_comment": "Bonus — Mynda Treacy (Microsoft Excel MVP) had the sharpest take on this in our Q&A. Most Excel pros build on broken foundations and never realize it.\nhttps://rileystream.substack.com/p/mynda-treacy-the-1-excel-mistake\nDirect read, no email gate.",
       "first_comment_time_display": "7:31 AM",
       "carousel_spec": null,
       "notes": "TEST poll. Match: Edition #25."
@@ -245,7 +245,7 @@
       "type": "Carousel",
       "is_test_poll": false,
       "content": "Most people know 3 Excel formulas.\nPower users live inside these 7.\nSwipe through and drop which one changed how you work 👇",
-      "first_comment": "Bonus — full breakdown of when to use each formula vs PivotTables vs DAX vs Power Query in this week's Excel Flow with Mike Girvin (4 languages of modern Excel).\n[Substack URL for Edition #28]\nFree, no email required.",
+      "first_comment": "Bonus — full breakdown of when to use each formula vs PivotTables vs DAX vs Power Query in this week's Excel Flow with Mike Girvin (4 languages of modern Excel).\nhttps://rileystream.substack.com/p/the-four-languages-of-modern-excel\nFree, no email required.",
       "first_comment_time_display": "8:01 AM",
       "carousel_pdf": "carousels/wed-li-0800.pdf",
       "carousel_spec": {
@@ -342,7 +342,7 @@
       "type": "Poll",
       "is_test_poll": true,
       "content": "What's your honest relationship with Excel macros and VBA?\n\nA) Use them regularly\nB) Know they exist, never learned\nC) Tried once, broke something\nD) Switched to Power Query\n\nDrop your answer and tell me if learning VBA in 2026 is still worth the time.",
-      "first_comment": "New Excel Flow edition just dropped — Alan Murray (Computergaga, 300K+ YouTube) on getting \"ridiculously good at the boring stuff.\" He's been training Excel pros for 25+ years.\n[Substack URL for Edition #29]",
+      "first_comment": "New Excel Flow edition just dropped — Alan Murray (Computergaga, 300K+ YouTube) on getting \"ridiculously good at the boring stuff.\" He's been training Excel pros for 25+ years.\nhttps://rileystream.substack.com/p/alan-murray-computergaga-get-ridiculously",
       "first_comment_time_display": "7:31 AM",
       "carousel_spec": null,
       "notes": "TEST poll. Edition #29 Alan Murray publishes 7 AM Thu — verify it is live before delivering this first comment."
@@ -438,7 +438,7 @@
       "type": "Poll",
       "is_test_poll": true,
       "content": "End-of-week check. What best describes your Excel week?\n\nA) Built something I'm proud of\nB) Fixed a mess, got no credit\nC) Learned something unexpected\nD) Opened a cursed file on Friday\n\nDrop the one Excel thing from this week you're either proud of or still recovering from.",
-      "first_comment": "Bonus — Mike Girvin's \"four languages of modern Excel\" framework. Maps which tool to use when (PivotTables, formulas, DAX, M Code).\n[Substack URL for Edition #28]\nFree download included in the edition.",
+      "first_comment": "Bonus — Mike Girvin's \"four languages of modern Excel\" framework. Maps which tool to use when (PivotTables, formulas, DAX, M Code).\nhttps://rileystream.substack.com/p/the-four-languages-of-modern-excel\nFree download included in the edition.",
       "first_comment_time_display": "7:31 AM",
       "carousel_spec": null,
       "notes": "TEST poll. Match: Edition #28."
