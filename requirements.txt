@@ -1,0 +1,3 @@
+# Only needed locally to (re)render carousel PDFs with carousel-renderer.py.
+# deliver.py and the GitHub Actions workflow use the Python standard library only.
+fpdf2>=2.7
