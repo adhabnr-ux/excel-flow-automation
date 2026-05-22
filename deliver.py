@@ -98,30 +98,44 @@ def carousel_url(post):
 
 
 def messages_for(post, flags):
-    """Build the ordered WhatsApp messages for one post."""
+    """Build the ordered WhatsApp messages for one post.
+
+    Every post sends as two bubbles: (1) header/instructions, (2) content only.
+    This lets the user long-press bubble 2 and copy clean text with no metadata.
+    """
     plat = post["platform"]
     flagblock = "".join("\n⚠️ " + f for f in flags)
     msgs = []
 
     if post["type"] == "Carousel":
         link = carousel_url(post) or "(carousel PDF link unavailable)"
+        # Bubble 1 — instructions + PDF link (not copy-pasteable, keep together)
         msgs.append(
             f"📅 EXCEL FLOW\n{plat} · {post['post_time_display']} · CAROUSEL POST"
-            f"{flagblock}\n🎨 Carousel PDF — download, then upload to LinkedIn as a "
+            f"{flagblock}\n\n🎨 Download this PDF, then upload to LinkedIn as a "
             f"document post:\n{link}")
-        msgs.append("📅 EXCEL FLOW · CAROUSEL CAPTION (copy into the post text)\n"
-                    f"----\n{post['content']}")
+        # Bubble 2 — caption label
+        msgs.append(f"📅 EXCEL FLOW · CAROUSEL CAPTION\n{plat} · {post['post_time_display']} · copy this into the post text 👇")
+        # Bubble 3 — clean caption content only
+        msgs.append(post["content"])
         if post.get("first_comment"):
-            msgs.append("📅 EXCEL FLOW · CAROUSEL FIRST COMMENT (post within 60s of "
-                        f"publishing)\n----\n{post['first_comment']}")
+            # Bubble 4 — first comment label
+            msgs.append(f"📅 EXCEL FLOW · CAROUSEL FIRST COMMENT\nPost within 60s of publishing 👇")
+            # Bubble 5 — clean first comment content only
+            msgs.append(post["first_comment"])
         return msgs
 
+    # Bubble 1 — header + context (platform, time, type, QA flags)
     head = f"📅 EXCEL FLOW\n{plat} · {post['post_time_display']} · {post['type']}"
-    msgs.append(f"{head}{flagblock}\n----\n{post['content']}")
+    msgs.append(f"{head}{flagblock}")
+    # Bubble 2 — clean content only (long-press and copy this)
+    msgs.append(post["content"])
     if post.get("is_test_poll") and post.get("first_comment"):
         when = post.get("first_comment_time_display") or "right after the poll"
-        msgs.append(f"📅 EXCEL FLOW\n{plat} · FIRST COMMENT — post within 60s, at "
-                    f"{when}\n----\n{post['first_comment']}")
+        # Bubble 3 — first comment label
+        msgs.append(f"📅 EXCEL FLOW · FIRST COMMENT\n{plat} · post within 60s, at {when} 👇")
+        # Bubble 4 — clean first comment content only
+        msgs.append(post["first_comment"])
     return msgs
 
 
