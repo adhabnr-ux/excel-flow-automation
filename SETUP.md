@@ -32,8 +32,43 @@ On github.com: **Actions** tab → **Excel Flow Delivery** → **Run workflow** 
 pick a window (e.g. Morning) → **Run workflow**. Confirm a WhatsApp message
 arrives. The run log also prints the full batch report.
 
-### Step 3 — Live
-The 3 daily schedules now run on their own. Nothing else to do.
+### Step 3 — Set up external cron (cron-job.org) — REQUIRED for reliability
+
+GitHub's built-in scheduler can silently skip runs on newer repos. Fix this
+with a free external cron that pings GitHub's API directly — takes 5 minutes.
+
+**A) Create a GitHub Personal Access Token (PAT)**
+
+1. Go to github.com → your profile picture → **Settings**
+2. Scroll to the bottom → **Developer settings** → **Personal access tokens** → **Fine-grained tokens**
+3. Click **Generate new token**
+4. Name: `Excel Flow cron`  |  Expiration: **No expiration** (or 1 year)
+5. Repository access: **Only select repositories** → pick `excel-flow-automation`
+6. Permissions → **Actions** → set to **Read and write**
+7. Click **Generate token** and copy it (you won't see it again)
+8. Save it somewhere safe — you'll paste it into cron-job.org next
+
+**B) Create 3 cron jobs on cron-job.org**
+
+1. Go to **cron-job.org** → sign up (free) → **CREATE CRONJOB**
+2. Set up **Job 1 (Morning)**:
+   - Title: `Excel Flow Morning`
+   - URL: `https://api.github.com/repos/adhabnr-ux/excel-flow-automation/dispatches`
+   - Execution schedule: **Custom** → Hours: `13`, Minutes: `30`, Days/Months/Weekdays: `*`
+   - Click **ADVANCED** → **Headers** → add:
+     - `Authorization` = `Bearer YOUR_PAT_HERE`
+     - `Accept` = `application/vnd.github+json`
+     - `Content-Type` = `application/json`
+   - **Request body**: `{"event_type":"morning"}`
+   - Save
+3. Repeat for **Job 2 (Midday)**: Hours `18`, Minutes `0`, body `{"event_type":"midday"}`
+4. Repeat for **Job 3 (Evening)**: Hours `23`, Minutes `0`, body `{"event_type":"evening"}`
+
+That's it — cron-job.org fires daily at 13:30, 18:00, 23:00 UTC (= 6:30 AM, 11:00 AM,
+4:00 PM Arizona time). GitHub's built-in schedule stays as a backup.
+
+### Step 4 — Live
+Once cron-job.org is set up, nothing else to do. Posts arrive automatically.
 
 ## What I still need from you
 

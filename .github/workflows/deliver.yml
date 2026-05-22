@@ -2,7 +2,12 @@ name: Excel Flow Delivery
 
 # Three scheduled runs per day (cron is UTC; America/Phoenix is UTC-7, no DST).
 # 06:30 MST = 13:30 UTC  |  11:00 MST = 18:00 UTC  |  16:00 MST = 23:00 UTC
+#
+# repository_dispatch is the reliable backup: cron-job.org POSTs to the GitHub
+# API with event_type morning/midday/evening at the same UTC times.
 on:
+  repository_dispatch:
+    types: [morning, midday, evening]
   schedule:
     - cron: '30 13 * * *'   # Morning  — 06:30 America/Phoenix
     - cron: '0 18 * * *'    # Midday   — 11:00 America/Phoenix
@@ -30,6 +35,12 @@ jobs:
         run: |
           if [ -n "${{ inputs.window }}" ]; then
             echo "window=${{ inputs.window }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            case "${{ github.event.action }}" in
+              morning) echo "window=Morning" >> "$GITHUB_OUTPUT" ;;
+              midday)  echo "window=Midday"  >> "$GITHUB_OUTPUT" ;;
+              evening) echo "window=Evening" >> "$GITHUB_OUTPUT" ;;
+            esac
           else
             case "${{ github.event.schedule }}" in
               "30 13 * * *") echo "window=Morning" >> "$GITHUB_OUTPUT" ;;
