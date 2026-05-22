@@ -44,7 +44,7 @@
         "font": "Inter",
         "size_px": 1080,
         "slides": [
-          {"n": 1, "kind": "cover", "title": "9 Excel Mistakes That Make You Look Like a Beginner", "subtext": "Fix #4 and people will actually stop asking you for help", "handle": "riley-stream-5434213ab"},
+          {"n": 1, "kind": "cover", "title": "9 Excel Mistakes That Make You Look Like a Beginner", "subtext": "Fix #4 and people will actually stop asking you for help", "handle": "Riley Stream"},
           {"n": 2, "kind": "content", "header": "MISTAKE #1", "title": "Using VLOOKUP in 2026", "body": "VLOOKUP breaks when you insert a column. Can't search left. Slows on large data. XLOOKUP does everything VLOOKUP does and more. If you're still teaching VLOOKUP, you're setting people up to unlearn.", "footer": "1 of 9"},
           {"n": 3, "kind": "content", "header": "MISTAKE #2", "title": "Merged Cells Everywhere", "body": "They look clean. They break every formula that touches them. Use 'Center Across Selection' instead. Same look. Zero headaches. Your SORT and FILTER will work again.", "footer": "2 of 9"},
           {"n": 4, "kind": "content", "header": "MISTAKE #3", "title": "Hardcoding Numbers Inside Formulas", "body": "=A2*0.08 means nothing to the next person. Put 0.08 in a labeled cell called TaxRate. Now =A2*TaxRate reads like English. The #1 cause of Excel errors in two major academic studies.", "footer": "3 of 9"},
@@ -53,7 +53,7 @@
           {"n": 7, "kind": "content", "header": "MISTAKE #6", "title": "No Backup Before Editing Someone Else's File", "body": "Ctrl+Shift+S → save a copy with today's date BEFORE you touch anything. You will mess something up. Past-you should give future-you the gift of an undo button.", "footer": "6 of 9"},
           {"n": 8, "kind": "content", "header": "MISTAKE #7", "title": "Color-Coding With No Legend", "body": "Red, yellow, green cells — and no key explaining what they mean. The person who built it knows. Nobody else does. Either add a legend or stop the coding.", "footer": "7 of 9"},
           {"n": 9, "kind": "content", "header": "MISTAKE #8", "title": "Volatile Functions Everywhere", "body": "NOW(), TODAY(), OFFSET(), INDIRECT() recalculate on EVERY keystroke in your workbook. One of these in 10,000 cells = an unusable file. Use them sparingly.", "footer": "8 of 9"},
-          {"n": 10, "kind": "close", "header": "MISTAKE #9", "title": "Sheet1, Sheet2, Sheet3", "body": "Name your sheets. INPUTS, CALCULATIONS, OUTPUTS, DASHBOARD. Anyone opening your file should understand its structure in 5 seconds. This is free.", "close_text": "Which one are you fixing first? Drop it below. And follow for more Excel content every week.", "handle": "riley-stream-5434213ab"}
+          {"n": 10, "kind": "close", "header": "MISTAKE #9", "title": "Sheet1, Sheet2, Sheet3", "body": "Name your sheets. INPUTS, CALCULATIONS, OUTPUTS, DASHBOARD. Anyone opening your file should understand its structure in 5 seconds. This is free.", "close_text": "Which one are you fixing first? Drop it below. And follow for more Excel content every week.", "handle": "Riley Stream"}
         ]
       },
       "notes": "Carousel 1. PDF, native LinkedIn document upload, 10 slides, 1080x1080."
@@ -254,7 +254,7 @@
         "font": "Inter",
         "size_px": 1080,
         "slides": [
-          {"n": 1, "kind": "cover", "title": "7 Excel Formulas That Handle 90% of Real Work", "subtext": "Most people use 3. Power users live inside 7.", "handle": "riley-stream-5434213ab"},
+          {"n": 1, "kind": "cover", "title": "7 Excel Formulas That Handle 90% of Real Work", "subtext": "Most people use 3. Power users live inside 7.", "handle": "Riley Stream"},
           {"n": 2, "kind": "formula", "header": "FORMULA 1 — XLOOKUP", "header_accent": true, "title": "Find anything in any direction", "code": "=XLOOKUP(lookup_value, search_range, return_range, \"Not Found\")", "body": "Replaces VLOOKUP and HLOOKUP. Searches any direction. Handles errors automatically. Learn this one first."},
           {"n": 3, "kind": "formula", "header": "FORMULA 2 — SUMIFS", "header_accent": true, "title": "Sum with multiple conditions in one step", "code": "=SUMIFS(sum_range, criteria_range1, criteria1, criteria_range2, criteria2)", "body": "Stop building helper columns to filter before summing. SUMIFS does it inline. Same pattern for COUNTIFS, AVERAGEIFS, MINIFS, MAXIFS."},
           {"n": 4, "kind": "formula", "header": "FORMULA 3 — IFERROR", "header_accent": true, "title": "Make your files look professional instantly", "code": "=IFERROR(your_formula, \"No Result\")", "body": "Wrap any formula in IFERROR. Errors become clean readable text. One habit that makes every file you build look intentional."},
@@ -262,7 +262,7 @@
           {"n": 6, "kind": "formula", "header": "FORMULA 5 — FILTER", "header_accent": true, "title": "Filter without filters", "code": "=FILTER(SalesData, SalesData[Region]=\"West\")", "body": "Returns a live, filtered list. Updates instantly when source data changes. The biggest single upgrade to Excel formulas in 20 years."},
           {"n": 7, "kind": "formula", "header": "FORMULA 6 — INDEX MATCH", "header_accent": true, "title": "The flexible lookup pair (still useful in 2026)", "code": "=INDEX(return_range, MATCH(lookup_value, search_range, 0))", "body": "XLOOKUP replaces this for new work — but you'll inherit thousands of legacy INDEX/MATCH formulas. Know how it works."},
           {"n": 8, "kind": "formula", "header": "FORMULA 7 — LET", "header_accent": true, "title": "Name your variables inside a formula", "code": "=LET(rate, 0.08, qty, A2, price, B2, qty * price * (1+rate))", "body": "Long formulas become readable. Calculations get reused without repeating. The modern way to write complex formulas."},
-          {"n": 9, "kind": "close", "title": "Which of these do you use every day?", "subtext": "Drop your answer. And share the formula not on this list that you think belongs here.", "handle": "riley-stream-5434213ab"}
+          {"n": 9, "kind": "close", "title": "Which of these do you use every day?", "subtext": "Drop your answer. And share the formula not on this list that you think belongs here.", "handle": "Riley Stream"}
         ]
       },
       "notes": "Carousel 2. PDF native upload, 9 slides, 1080x1080. First comment within 60s."
@@ -463,7 +463,7 @@
         "font": "Inter",
         "size_px": 1080,
         "slides": [
-          {"n": 1, "kind": "cover", "title": "Build an Excel Dashboard in Under 1 Hour", "subtext": "Step by step. No VBA. No prior experience required.", "handle": "riley-stream-5434213ab"},
+          {"n": 1, "kind": "cover", "title": "Build an Excel Dashboard in Under 1 Hour", "subtext": "Step by step. No VBA. No prior experience required.", "handle": "Riley Stream"},
           {"n": 2, "kind": "content", "header": "BEFORE YOU BUILD ANYTHING", "body": "Every good dashboard starts with one question: What decision does this help someone make? If you can't answer that in one sentence, you're not ready to build yet. Write the question first. The dashboard is just the answer."},
           {"n": 3, "kind": "content", "header": "STEP 1 — Structure Your Raw Data as a Table", "header_accent": true, "body": "Click anywhere in your data. Press Ctrl+T. Name it something readable like SalesData or OrderLog. Every formula you write now auto-expands when new data comes in."},
           {"n": 4, "kind": "content", "header": "STEP 2 — Separate Sheets for Data, Pivots, Dashboard", "body": "Never build dashboard + pivots on the same sheet. Create three sheets: DATA / PIVOTS / DASHBOARD. When something breaks (and it will), you know where to look."},
@@ -473,7 +473,7 @@
           {"n": 8, "kind": "content", "header": "STEP 6 — Layout: One Metric Per Section. White Space Is Not Wasted Space.", "body": "Don't cram. Group related metrics. Use Excel's gridlines off (View → uncheck Gridlines). Add a title at the top. Looks finished, takes 90 seconds."},
           {"n": 9, "kind": "content", "header": "STEP 7 — Lock the Dashboard Sheet", "body": "Review → Protect Sheet. Users can refresh and click slicers; they can't accidentally break formulas. The dashboard you ship in 60 minutes survives the next 60 weeks."},
           {"n": 10, "kind": "content", "header": "3 THINGS THAT KILL DASHBOARDS", "body": "1. Too many metrics — if everything is important, nothing is.\n2. No data validation — garbage in, garbage out.\n3. Building for yourself, not the person who'll use it."},
-          {"n": 11, "kind": "close", "title": "What's the first dashboard you're building with this?", "subtext": "Drop it in the comments. Save this for the next time someone asks. And follow for more step-by-step Excel content.", "footer_note": "Want structured learning to go deeper? I recommend Maven Analytics' Excel + Power BI tracks. Affiliate link available in my Substack.", "handle": "riley-stream-5434213ab"}
+          {"n": 11, "kind": "close", "title": "What's the first dashboard you're building with this?", "subtext": "Drop it in the comments. Save this for the next time someone asks. And follow for more step-by-step Excel content.", "footer_note": "Want structured learning to go deeper? I recommend Maven Analytics' Excel + Power BI tracks. Affiliate link available in my Substack.", "handle": "Riley Stream"}
         ]
       },
       "notes": "Carousel 3. PDF native upload, 11 slides, 1080x1080. Affiliate disclosure is in the caption."
