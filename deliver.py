@@ -33,7 +33,7 @@ REF = os.environ.get("GITHUB_REF_NAME", "main").strip() or "main"
 MST = datetime.timezone(datetime.timedelta(hours=-7))  # America/Phoenix, no DST
 GAP = 30  # seconds between WhatsApp messages (stays within CallMeBot limits)
 
-RE_PLACEHOLDER = re.compile(r"\[[^\]\n]+\]")
+RE_PLACEHOLDER = re.compile(r"(?<!\w)\[[^\]\n]+\]")
 RE_URL = re.compile(r"https?://[^\s)]+")
 RE_OPTION = re.compile(r"^[A-Z]\)\s*(.+)$")
 
