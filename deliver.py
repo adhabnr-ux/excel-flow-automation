@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 """Excel Flow delivery — run by GitHub Actions on a schedule.
 
-Usage:
-    python3 deliver.py                      # auto: delivers posts due in the
-                                            #   current 30-min slot (scheduled)
-    python3 deliver.py Morning|Midday|Evening  # manual window override
+Usage:  python3 deliver.py <Morning|Midday|Evening>
 
-The scheduled workflow runs every 30 minutes. deliver.py computes which
-30-min slot the current run belongs to and delivers any post whose
-post_time falls in that slot. Each post is delivered at its own time —
-no batching hours in advance.
+Reads every content/week-*.json, finds the posts dated today (America/Phoenix)
+in the given window, QA-checks them, and sends each as a WhatsApp message via
+CallMeBot. Fully deterministic — no AI, no rewriting. Post content is delivered
+byte-for-byte. Carousels are pre-rendered PDFs already committed under
+carousels/; their public raw URL is delivered.
 
 Environment:
   CALLMEBOT_PHONE    CallMeBot phone number   (from GitHub Secrets)
@@ -142,28 +140,11 @@ def messages_for(post, flags):
 
 
 def main():
-    now = datetime.datetime.now(MST)
-    today = now.strftime("%Y-%m-%d")
-
-    if len(sys.argv) == 2 and sys.argv[1] in ("Morning", "Midday", "Evening"):
-        # Manual window mode — deliver all posts in that window
-        window = sys.argv[1]
-        log(f"Excel Flow delivery — manual window={window} date={today} (America/Phoenix)")
-        batch_filter = lambda p: p["window"] == window
-        empty_msg = f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} window today ({today})."
-    elif len(sys.argv) == 1:
-        # Auto slot mode — deliver posts due in the current 30-min slot
-        slot_min = (now.hour * 60 + now.minute) // 30 * 30
-        slot_start = now.replace(hour=slot_min // 60, minute=slot_min % 60,
-                                 second=0, microsecond=0)
-        slot_end = slot_start + datetime.timedelta(minutes=30)
-        s0 = slot_start.strftime("%H:%M")
-        s1 = slot_end.strftime("%H:%M")
-        log(f"Excel Flow delivery — slot={s0}-{s1} date={today} (America/Phoenix)")
-        batch_filter = lambda p: s0 <= p["post_time"][:5] < s1
-        empty_msg = None  # exit silently — most 30-min slots have no posts
-    else:
-        sys.exit("Usage: python3 deliver.py [Morning|Midday|Evening]")
+    if len(sys.argv) != 2 or sys.argv[1] not in ("Morning", "Midday", "Evening"):
+        sys.exit("Usage: python3 deliver.py <Morning|Midday|Evening>")
+    window = sys.argv[1]
+    today = datetime.datetime.now(MST).strftime("%Y-%m-%d")
+    log(f"Excel Flow delivery — window={window} date={today} (America/Phoenix)")
 
     if not PHONE or not APIKEY:
         sys.exit("ERROR: CALLMEBOT_PHONE / CALLMEBOT_APIKEY not set in Secrets.")
@@ -172,13 +153,13 @@ def main():
     for f in sorted(glob.glob("content/week-*.json")):
         posts += json.load(open(f, encoding="utf-8")).get("posts", [])
     batch = sorted(
-        [p for p in posts if p["date"] == today and batch_filter(p)],
+        [p for p in posts if p["date"] == today and p["window"] == window],
         key=lambda p: p["post_time"])
     log(f"{len(batch)} post(s) in batch: {[p['id'] for p in batch]}")
 
     if not batch:
-        if empty_msg:
-            send_whatsapp(empty_msg)
+        send_whatsapp(f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} "
+                      f"window today ({today}).")
         return
 
     flags = {p["id"]: qa(p) for p in batch}
