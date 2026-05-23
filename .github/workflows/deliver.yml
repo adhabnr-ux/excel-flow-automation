@@ -1,17 +1,16 @@
 name: Excel Flow Delivery
 
-# Three scheduled runs per day (cron is UTC; America/Phoenix is UTC-7, no DST).
-# 06:30 MST = 13:30 UTC  |  11:00 MST = 18:00 UTC  |  16:00 MST = 23:00 UTC
+# Runs every 30 minutes. deliver.py auto-detects which posts are due in the
+# current slot (America/Phoenix, UTC-7, no DST) and sends only those.
+# Each post arrives on WhatsApp at its own scheduled time — no early batching.
 #
-# repository_dispatch is the reliable backup: cron-job.org POSTs to the GitHub
-# API with event_type morning/midday/evening at the same UTC times.
+# repository_dispatch (types: morning/midday/evening) is kept for the
+# cron-job.org backup trigger if GitHub's scheduler ever stalls.
 on:
   repository_dispatch:
     types: [morning, midday, evening]
   schedule:
-    - cron: '30 13 * * *'   # Morning  — 06:30 America/Phoenix
-    - cron: '0 18 * * *'    # Midday   — 11:00 America/Phoenix
-    - cron: '0 23 * * *'    # Evening  — 16:00 America/Phoenix
+    - cron: '*/30 * * * *'   # every 30 min — deliver.py picks the right slot
   workflow_dispatch:
     inputs:
       window:
@@ -30,27 +29,19 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Resolve window
-        id: win
-        run: |
-          if [ -n "${{ inputs.window }}" ]; then
-            echo "window=${{ inputs.window }}" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event_name }}" = "repository_dispatch" ]; then
-            case "${{ github.event.action }}" in
-              morning) echo "window=Morning" >> "$GITHUB_OUTPUT" ;;
-              midday)  echo "window=Midday"  >> "$GITHUB_OUTPUT" ;;
-              evening) echo "window=Evening" >> "$GITHUB_OUTPUT" ;;
-            esac
-          else
-            case "${{ github.event.schedule }}" in
-              "30 13 * * *") echo "window=Morning" >> "$GITHUB_OUTPUT" ;;
-              "0 18 * * *")  echo "window=Midday"  >> "$GITHUB_OUTPUT" ;;
-              "0 23 * * *")  echo "window=Evening" >> "$GITHUB_OUTPUT" ;;
-            esac
-          fi
-
       - name: Deliver
         env:
           CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
           CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
-        run: python3 deliver.py "${{ steps.win.outputs.window }}"
+        run: |
+          if [ -n "${{ inputs.window }}" ]; then
+            python3 deliver.py "${{ inputs.window }}"
+          elif [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            case "${{ github.event.action }}" in
+              morning) python3 deliver.py Morning ;;
+              midday)  python3 deliver.py Midday  ;;
+              evening) python3 deliver.py Evening ;;
+            esac
+          else
+            python3 deliver.py
+          fi
