@@ -1,0 +1,838 @@
+{
+  "week": "2026-05-26",
+  "posts": [
+    {
+      "id": "mon-li-0730",
+      "date": "2026-05-26",
+      "day": "Monday",
+      "post_time": "07:30",
+      "post_time_display": "7:30 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Poll",
+      "content": "When someone sends you an Excel file with no context, what is the first tab you open?\n\nA) Whatever tab is active when it opens\nB) The most recently modified sheet\nC) A tab called README or Instructions if it exists\nD) I close it and ask them what they actually need\n\nDrop the worst \"here is the file, good luck\" handoff you have ever received.",
+      "first_comment": "Bonus — this week's Excel Flow edition with Mike Girvin covers the four languages of modern Excel and exactly which one to reach for in situations like this.\nhttps://rileystream.substack.com/p/the-four-languages-of-modern-excel — free, no email required.",
+      "first_comment_time_display": "7:31 AM",
+      "is_test_poll": true
+    },
+    {
+      "id": "mon-li-0800",
+      "date": "2026-05-26",
+      "day": "Monday",
+      "post_time": "08:00",
+      "post_time_display": "8:00 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Carousel",
+      "content": "9 Excel mistakes that make you look like a beginner.\nMost people make at least 4 of these without realizing it.\nSwipe through and drop which one you are fixing first 👇",
+      "first_comment": "Full breakdown of the Tables habit (Mistake #4) and why it is the single highest-leverage Excel change most analysts never make — in this week's Excel Flow with Mike Girvin.\nhttps://rileystream.substack.com/p/the-four-languages-of-modern-excel",
+      "first_comment_time_display": "8:01 AM",
+      "carousel_spec": {
+        "title": "9 Excel Mistakes That Make You Look Like a Beginner (And How to Fix All of Them)",
+        "palette": {
+          "bg": "#0A1628",
+          "text": "#FFFFFF",
+          "accent": "#00B050"
+        },
+        "font": "Inter",
+        "size_px": 1080,
+        "slides": [
+          {
+            "n": 1,
+            "kind": "cover",
+            "title": "9 Excel Mistakes That Make You Look Like a Beginner",
+            "subtext": "Fix #4 and people will actually stop asking you for help",
+            "handle": "Riley Stream"
+          },
+          {
+            "n": 2,
+            "kind": "content",
+            "header": "MISTAKE #1",
+            "title": "Using VLOOKUP in 2026",
+            "body": "VLOOKUP breaks when you insert a column. Can't search left. Slows on large data. XLOOKUP does everything VLOOKUP does and more. If you're still teaching VLOOKUP, you're setting people up to unlearn.",
+            "footer": "1 of 9"
+          },
+          {
+            "n": 3,
+            "kind": "content",
+            "header": "MISTAKE #2",
+            "title": "Merged Cells Everywhere",
+            "body": "They look clean. They break every formula that touches them. Use 'Center Across Selection' instead. Same look. Zero headaches. Your SORT and FILTER will work again.",
+            "footer": "2 of 9"
+          },
+          {
+            "n": 4,
+            "kind": "content",
+            "header": "MISTAKE #3",
+            "title": "Hardcoding Numbers Inside Formulas",
+            "body": "=A2*0.08 means nothing to the next person. Put 0.08 in a labeled cell called TaxRate. Now =A2*TaxRate reads like English. The #1 cause of Excel errors in two major academic studies.",
+            "footer": "3 of 9"
+          },
+          {
+            "n": 5,
+            "kind": "content",
+            "header": "MISTAKE #4",
+            "header_accent": true,
+            "title": "Not Using Tables (the actual Excel Tables feature)",
+            "body": "Most people use Excel as a grid. Tables turn your range into a structured object. Formulas auto-expand. Filters built in. References become readable. The single habit that separates spreadsheet maintainers from spreadsheet fighters.",
+            "footer": "4 of 9"
+          },
+          {
+            "n": 6,
+            "kind": "content",
+            "header": "MISTAKE #5",
+            "title": "Whole-Column References Everywhere",
+            "body": "=SUM(A:A) looks clean but forces Excel to evaluate a million cells. Use defined ranges or Tables. Your file performance will thank you.",
+            "footer": "5 of 9"
+          },
+          {
+            "n": 7,
+            "kind": "content",
+            "header": "MISTAKE #6",
+            "title": "No Backup Before Editing Someone Else's File",
+            "body": "Ctrl+Shift+S → save a copy with today's date BEFORE you touch anything. You will mess something up. Past-you should give future-you the gift of an undo button.",
+            "footer": "6 of 9"
+          },
+          {
+            "n": 8,
+            "kind": "content",
+            "header": "MISTAKE #7",
+            "title": "Color-Coding With No Legend",
+            "body": "Red, yellow, green cells — and no key explaining what they mean. The person who built it knows. Nobody else does. Either add a legend or stop the coding.",
+            "footer": "7 of 9"
+          },
+          {
+            "n": 9,
+            "kind": "content",
+            "header": "MISTAKE #8",
+            "title": "Volatile Functions Everywhere",
+            "body": "NOW(), TODAY(), OFFSET(), INDIRECT() recalculate on EVERY keystroke in your workbook. One of these in 10,000 cells = an unusable file. Use them sparingly.",
+            "footer": "8 of 9"
+          },
+          {
+            "n": 10,
+            "kind": "close",
+            "header": "MISTAKE #9",
+            "title": "Sheet1, Sheet2, Sheet3",
+            "body": "Name your sheets. INPUTS, CALCULATIONS, OUTPUTS, DASHBOARD. Anyone opening your file should understand its structure in 5 seconds. This is free.",
+            "close_text": "Which one are you fixing first? Drop it below. And follow for more Excel content every week.",
+            "handle": "Riley Stream"
+          }
+        ]
+      },
+      "carousel_pdf": "carousels/mon-li-0800.pdf"
+    },
+    {
+      "id": "mon-li-1200",
+      "date": "2026-05-26",
+      "day": "Monday",
+      "post_time": "12:00",
+      "post_time_display": "12:00 PM",
+      "window": "Midday",
+      "platform": "LinkedIn",
+      "type": "This or That Poll",
+      "content": "When you build a spreadsheet for someone else do you:\n\nA) Build it how you would want it if you were using it\nB) Ask them exactly how they work and build it around that\n\nDrop the last time your assumption about what someone needed turned out to be completely wrong.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "tue-li-0730",
+      "date": "2026-05-27",
+      "day": "Tuesday",
+      "post_time": "07:30",
+      "post_time_display": "7:30 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Poll",
+      "content": "What Excel skill do people at your company most often come to you for help with?\n\nA) They broke a formula and need it fixed\nB) They need a pivot table built or explained\nC) They need data cleaned and do not know how\nD) They need a dashboard by end of day\n\nDrop your answer and tell me if being the Excel person at your company is a blessing or a curse.",
+      "first_comment": "Bonus — Mynda Treacy (Microsoft Excel MVP) covered exactly why most Excel pros are helping people fix problems that should never have existed in the first place — structured foundations prevent 80% of the fires.\nhttps://rileystream.substack.com/p/mynda-treacy-the-1-excel-mistake",
+      "first_comment_time_display": "7:31 AM",
+      "is_test_poll": true
+    },
+    {
+      "id": "tue-li-0900",
+      "date": "2026-05-27",
+      "day": "Tuesday",
+      "post_time": "09:00",
+      "post_time_display": "9:00 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Creator Shoutout",
+      "content": "If you are not following @Mynda Treacy you are missing one of the most complete Excel educators on LinkedIn.\n\nMicrosoft Excel MVP. Teaches for both beginners and power users without dumbing anything down. Her framework on structured data foundations changed how I think about every workbook I open.\n\nThe concept: most Excel problems are not formula problems. They are structure problems. Fix the foundation and the formulas almost write themselves.\n\nHer free training at MyOnlineTrainingHub is some of the highest signal Excel content available anywhere.\n\nGo follow her. Everything she posts is worth your time.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "tue-li-1200",
+      "date": "2026-05-27",
+      "day": "Tuesday",
+      "post_time": "12:00",
+      "post_time_display": "12:00 PM",
+      "window": "Midday",
+      "platform": "LinkedIn",
+      "type": "Poll",
+      "content": "Your pivot table totals do not match your raw data. What do you check first?\n\nA) The data source range is missing rows\nB) There are filters applied to the source data\nC) The date field is grouping incorrectly\nD) I refresh it three times and hope it fixes itself\n\nDrop the pivot table discrepancy that took you the longest to diagnose.",
+      "first_comment": "Full pivot table troubleshooting framework — including the four causes that explain 90% of discrepancies — in Excel Flow Edition #30.\n[Substack URL for Edition #30]",
+      "first_comment_time_display": "12:01 PM",
+      "is_test_poll": true
+    },
+    {
+      "id": "wed-li-0730",
+      "date": "2026-05-28",
+      "day": "Wednesday",
+      "post_time": "07:30",
+      "post_time_display": "7:30 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Poll",
+      "content": "Power Query — be completely honest. Where are you with it right now?\n\nA) Use it daily. It is the single best thing in Excel.\nB) Know how it works but only use it occasionally\nC) Have tried it, got confused, went back to manual\nD) Have never opened it and I know I should\n\nDrop your answer and tell me the data task that either converted you or the one that still makes you do it manually.",
+      "first_comment": "Bonus — Mynda Treacy's take on why Power Query is the most skipped feature by analysts who would benefit from it most — and the exact use case that makes it click.\nhttps://rileystream.substack.com/p/mynda-treacy-the-1-excel-mistake",
+      "first_comment_time_display": "7:31 AM",
+      "is_test_poll": true
+    },
+    {
+      "id": "wed-li-0800",
+      "date": "2026-05-28",
+      "day": "Wednesday",
+      "post_time": "08:00",
+      "post_time_display": "8:00 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Carousel",
+      "content": "Most people know 3 Excel formulas.\nPower users live inside these 7.\nSwipe through and drop which one changed how you work 👇",
+      "first_comment": "Full breakdown of when to use formulas vs Power Query vs DAX vs PivotTables — the four languages of modern Excel — in this week's edition with Mike Girvin.\nhttps://rileystream.substack.com/p/the-four-languages-of-modern-excel — free read, no email required.",
+      "first_comment_time_display": "8:01 AM",
+      "carousel_spec": {
+        "title": "The Only 7 Excel Formulas You Actually Need for 90% of Real Work",
+        "palette": {
+          "bg": "#FFFFFF",
+          "text": "#1A1A2E",
+          "accent": "#00B050"
+        },
+        "font": "Inter",
+        "size_px": 1080,
+        "slides": [
+          {
+            "n": 1,
+            "kind": "cover",
+            "title": "7 Excel Formulas That Handle 90% of Real Work",
+            "subtext": "Most people use 3. Power users live inside 7.",
+            "handle": "Riley Stream"
+          },
+          {
+            "n": 2,
+            "kind": "formula",
+            "header": "FORMULA 1 — XLOOKUP",
+            "header_accent": true,
+            "title": "Find anything in any direction",
+            "code": "=XLOOKUP(lookup_value, search_range, return_range, \"Not Found\")",
+            "body": "Replaces VLOOKUP and HLOOKUP. Searches any direction. Handles errors automatically. Learn this one first."
+          },
+          {
+            "n": 3,
+            "kind": "formula",
+            "header": "FORMULA 2 — SUMIFS",
+            "header_accent": true,
+            "title": "Sum with multiple conditions in one step",
+            "code": "=SUMIFS(sum_range, criteria_range1, criteria1, criteria_range2, criteria2)",
+            "body": "Stop building helper columns to filter before summing. SUMIFS does it inline. Same pattern for COUNTIFS, AVERAGEIFS, MINIFS, MAXIFS."
+          },
+          {
+            "n": 4,
+            "kind": "formula",
+            "header": "FORMULA 3 — IFERROR",
+            "header_accent": true,
+            "title": "Make your files look professional instantly",
+            "code": "=IFERROR(your_formula, \"No Result\")",
+            "body": "Wrap any formula in IFERROR. Errors become clean readable text. One habit that makes every file you build look intentional."
+          },
+          {
+            "n": 5,
+            "kind": "formula",
+            "header": "FORMULA 4 — TEXT",
+            "header_accent": true,
+            "title": "Format any value into any string",
+            "code": "=TEXT(B2,\"$#,##0\")\n=\"Revenue as of \"&TEXT(TODAY(),\"MMMM YYYY\")",
+            "body": "Combine with & to build dynamic labels that update themselves every month, every quarter, every year."
+          },
+          {
+            "n": 6,
+            "kind": "formula",
+            "header": "FORMULA 5 — FILTER",
+            "header_accent": true,
+            "title": "Filter without filters",
+            "code": "=FILTER(SalesData, SalesData[Region]=\"West\")",
+            "body": "Returns a live, filtered list. Updates instantly when source data changes. The biggest single upgrade to Excel formulas in 20 years."
+          },
+          {
+            "n": 7,
+            "kind": "formula",
+            "header": "FORMULA 6 — INDEX MATCH",
+            "header_accent": true,
+            "title": "The flexible lookup pair (still useful in 2026)",
+            "code": "=INDEX(return_range, MATCH(lookup_value, search_range, 0))",
+            "body": "XLOOKUP replaces this for new work — but you'll inherit thousands of legacy INDEX/MATCH formulas. Know how it works."
+          },
+          {
+            "n": 8,
+            "kind": "formula",
+            "header": "FORMULA 7 — LET",
+            "header_accent": true,
+            "title": "Name your variables inside a formula",
+            "code": "=LET(rate, 0.08, qty, A2, price, B2, qty * price * (1+rate))",
+            "body": "Long formulas become readable. Calculations get reused without repeating. The modern way to write complex formulas."
+          },
+          {
+            "n": 9,
+            "kind": "close",
+            "title": "Which of these do you use every day?",
+            "subtext": "Drop your answer. And share the formula not on this list that you think belongs here.",
+            "handle": "Riley Stream"
+          }
+        ]
+      },
+      "carousel_pdf": "carousels/wed-li-0800.pdf"
+    },
+    {
+      "id": "wed-li-1200",
+      "date": "2026-05-28",
+      "day": "Wednesday",
+      "post_time": "12:00",
+      "post_time_display": "12:00 PM",
+      "window": "Midday",
+      "platform": "LinkedIn",
+      "type": "This or That Poll",
+      "content": "Are you still using merged cells?\n\nA) Yes and they work fine for me\nB) Stopped after they broke a sort and I learned my lesson\nC) Never used them\nD) What exactly is wrong with merged cells\n\nDrop your answer and if you picked A tell me what you are building that makes you confident in that choice.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "thu-li-0730",
+      "date": "2026-05-29",
+      "day": "Thursday",
+      "post_time": "07:30",
+      "post_time_display": "7:30 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Poll",
+      "content": "What is your honest relationship with VBA and macros in 2026?\n\nA) Use them regularly. Still essential for certain things.\nB) Know they exist but Power Query handles everything I need\nC) Tried once, broke something, never went back\nD) Actively moving everything to Python and not looking back\n\nDrop your answer and tell me whether you think learning VBA today is still worth the time investment.",
+      "first_comment": "Bonus — Alan Murray (Computergaga, 300K+ YouTube subscribers, 25+ years teaching Excel) gave the most direct answer I have heard on this exact question in Excel Flow Edition #29.\nhttps://rileystream.substack.com/p/alan-murray-computergaga-get-ridiculously",
+      "first_comment_time_display": "7:31 AM",
+      "is_test_poll": true
+    },
+    {
+      "id": "thu-li-0900",
+      "date": "2026-05-29",
+      "day": "Thursday",
+      "post_time": "09:00",
+      "post_time_display": "9:00 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Creator Shoutout",
+      "content": "If you work in FP&A and you are not following @Carl Seidman you are leaving insight on the table.\n\n300,000+ learners through his LinkedIn Learning courses on financial modeling and FP&A. The sharpest thinking in the space on what actually moves careers forward in finance.\n\nHis line from our Q&A in Excel Flow: \"Excel skills don't get you promoted.\"\n\nThat one sentence reorganized how I think about the entire newsletter. Technical skill is the entry ticket. Business judgment is what compounds.\n\nFollow him for the most direct thinking on FP&A careers you will find on this platform.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "thu-li-1200",
+      "date": "2026-05-29",
+      "day": "Thursday",
+      "post_time": "12:00",
+      "post_time_display": "12:00 PM",
+      "window": "Midday",
+      "platform": "LinkedIn",
+      "type": "Poll",
+      "content": "FP&A and finance people — what does your Excel model look like when deadline hits?\n\nA) Clean, documented, and I could hand it to anyone\nB) Functional but only I fully understand the logic\nC) A collection of decisions made under pressure I plan to clean up later\nD) I do not look at it too closely on deadline day\n\nDrop the model habit you are most proud of and the one you are most embarrassed by.",
+      "first_comment": "Carl Seidman's take on what actually separates good financial models from dangerous ones — Excel Flow Edition #26.\nhttps://rileystream.substack.com/p/carl-seidman-why-excel-skills-dont",
+      "first_comment_time_display": "12:01 PM",
+      "is_test_poll": true
+    },
+    {
+      "id": "thu-li-1230",
+      "date": "2026-05-29",
+      "day": "Thursday",
+      "post_time": "12:30",
+      "post_time_display": "12:30 PM",
+      "window": "Midday",
+      "platform": "LinkedIn",
+      "type": "This or That Poll",
+      "content": "On deadline day do you:\n\nA) Power through the formula work because that is where you live\nB) Copy paste and manually fix because at least you know it will work\n\nDrop the function that has saved you the most on deadline day specifically.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "fri-li-0730",
+      "date": "2026-05-30",
+      "day": "Friday",
+      "post_time": "07:30",
+      "post_time_display": "7:30 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Poll",
+      "content": "End of week check. What best describes your Excel week?\n\nA) Built something I am genuinely proud of\nB) Fixed someone else's mess and got no credit for it\nC) Learned something I did not expect to need\nD) Opened a file on Friday afternoon that should not legally exist\n\nDrop the one Excel thing from this week you are either proud of or still recovering from.",
+      "first_comment": "Mike Girvin's framework for knowing which Excel tool to reach for — formulas, PivotTables, DAX, or Power Query — so you stop using the wrong one for the job.\nhttps://rileystream.substack.com/p/the-four-languages-of-modern-excel",
+      "first_comment_time_display": "7:31 AM",
+      "is_test_poll": true
+    },
+    {
+      "id": "fri-li-0800",
+      "date": "2026-05-30",
+      "day": "Friday",
+      "post_time": "08:00",
+      "post_time_display": "8:00 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Carousel",
+      "content": "How to build an Excel dashboard in under an hour.\nNo VBA. No prior experience. Step by step system that actually works.\nSwipe through and save this for the next time someone asks you for a dashboard 👇",
+      "first_comment": "Full dashboard build with the exact PivotTable, slicer, and chart setup — plus the KPI selection framework — in Excel Flow Edition #30.\n[Substack URL for Edition #30]\nAffiliate note: Maven Analytics is referenced. Link in the edition.",
+      "first_comment_time_display": "8:01 AM",
+      "carousel_spec": {
+        "title": "How to Build an Excel Dashboard in Under an Hour (Step by Step)",
+        "palette": {
+          "bg": "#1C1C2E",
+          "text": "#FFFFFF",
+          "accent": "#FF6B35"
+        },
+        "font": "Inter",
+        "size_px": 1080,
+        "slides": [
+          {
+            "n": 1,
+            "kind": "cover",
+            "title": "Build an Excel Dashboard in Under 1 Hour",
+            "subtext": "Step by step. No VBA. No prior experience required.",
+            "handle": "Riley Stream"
+          },
+          {
+            "n": 2,
+            "kind": "content",
+            "header": "BEFORE YOU BUILD ANYTHING",
+            "body": "Every good dashboard starts with one question: What decision does this help someone make? If you can't answer that in one sentence, you're not ready to build yet. Write the question first. The dashboard is just the answer."
+          },
+          {
+            "n": 3,
+            "kind": "content",
+            "header": "STEP 1 — Structure Your Raw Data as a Table",
+            "header_accent": true,
+            "body": "Click anywhere in your data. Press Ctrl+T. Name it something readable like SalesData or OrderLog. Every formula you write now auto-expands when new data comes in."
+          },
+          {
+            "n": 4,
+            "kind": "content",
+            "header": "STEP 2 — Separate Sheets for Data, Pivots, Dashboard",
+            "body": "Never build dashboard + pivots on the same sheet. Create three sheets: DATA / PIVOTS / DASHBOARD. When something breaks (and it will), you know where to look."
+          },
+          {
+            "n": 5,
+            "kind": "content",
+            "header": "STEP 3 — Decide Your KPIs Before You Touch Design",
+            "body": "Pick your 3-5 KPIs. Total revenue. Units sold. Top category. Whatever the dashboard is for. Build those pivot tables FIRST. Design SECOND. Most people do this backwards."
+          },
+          {
+            "n": 6,
+            "kind": "content",
+            "header": "STEP 4 — Add Slicers for One-Click Filtering",
+            "body": "Click your pivot → Insert → Slicer. Choose your filter fields. Now your dashboard filters with one click. No dropdowns. No formulas. The single feature that makes non-Excel people feel like they can use your file."
+          },
+          {
+            "n": 7,
+            "kind": "content",
+            "header": "STEP 5 — Charts: Bar for Comparison, Line for Trends. That's It.",
+            "body": "No 3D charts. No pie charts with 12 slices. No donuts. Bar for categorical comparison. Line for time series. Two chart types handle 95% of dashboards. Resist everything else."
+          },
+          {
+            "n": 8,
+            "kind": "content",
+            "header": "STEP 6 — Layout: One Metric Per Section. White Space Is Not Wasted Space.",
+            "body": "Don't cram. Group related metrics. Use Excel's gridlines off (View → uncheck Gridlines). Add a title at the top. Looks finished, takes 90 seconds."
+          },
+          {
+            "n": 9,
+            "kind": "content",
+            "header": "STEP 7 — Lock the Dashboard Sheet",
+            "body": "Review → Protect Sheet. Users can refresh and click slicers; they can't accidentally break formulas. The dashboard you ship in 60 minutes survives the next 60 weeks."
+          },
+          {
+            "n": 10,
+            "kind": "content",
+            "header": "3 THINGS THAT KILL DASHBOARDS",
+            "body": "1. Too many metrics — if everything is important, nothing is.\n2. No data validation — garbage in, garbage out.\n3. Building for yourself, not the person who'll use it."
+          },
+          {
+            "n": 11,
+            "kind": "close",
+            "title": "What's the first dashboard you're building with this?",
+            "subtext": "Drop it in the comments. Save this for the next time someone asks. And follow for more step-by-step Excel content.",
+            "footer_note": "Want structured learning to go deeper? I recommend Maven Analytics' Excel + Power BI tracks. Affiliate link available in my Substack.",
+            "handle": "Riley Stream"
+          }
+        ]
+      },
+      "carousel_pdf": "carousels/fri-li-0800.pdf"
+    },
+    {
+      "id": "fri-li-1200",
+      "date": "2026-05-30",
+      "day": "Friday",
+      "post_time": "12:00",
+      "post_time_display": "12:00 PM",
+      "window": "Midday",
+      "platform": "LinkedIn",
+      "type": "This or That Poll",
+      "content": "When you leave work today is your Excel:\n\nA) Cleaner and more organized than when you started Monday\nB) More complicated with tabs you will have to explain to your future self\n\nDrop the Excel tip you want to leave this group with going into the weekend.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sat-li-0900",
+      "date": "2026-05-31",
+      "day": "Saturday",
+      "post_time": "09:00",
+      "post_time_display": "9:00 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Poll",
+      "content": "Saturday question for the people who cannot fully switch off. What is your Excel goal for the rest of 2026?\n\nA) Finally learn Power Query properly\nB) Get comfortable with dynamic arrays and LAMBDA\nC) Build a dashboard I am actually proud to show someone\nD) Get fast enough to be the quickest person on my team\n\nDrop one specific thing you are doing this weekend toward that goal.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sat-li-1100",
+      "date": "2026-05-31",
+      "day": "Saturday",
+      "post_time": "11:00",
+      "post_time_display": "11:00 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Poll",
+      "content": "Slowest Excel file you ever inherited. What was the cause?\n\nA) Volatile functions like NOW and OFFSET everywhere\nB) Conditional formatting rules applied to entire columns\nC) External links pointing to files that no longer exist\nD) I genuinely never figured out what was wrong with it\n\nDrop the file performance nightmare and what you did to fix it.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sat-li-1300",
+      "date": "2026-05-31",
+      "day": "Saturday",
+      "post_time": "13:00",
+      "post_time_display": "1:00 PM",
+      "window": "Midday",
+      "platform": "LinkedIn",
+      "type": "This or That Poll",
+      "content": "When you want to learn something new in Excel do you get more from:\n\nA) A structured course that takes you through everything in order\nB) Having a real problem that forces you to figure it out right now\n\nDrop your answer and share the single best Excel resource you have ever found. One each. Let us build the definitive list right here.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sun-li-1000",
+      "date": "2026-06-01",
+      "day": "Sunday",
+      "post_time": "10:00",
+      "post_time_display": "10:00 AM",
+      "window": "Morning",
+      "platform": "LinkedIn",
+      "type": "Poll",
+      "content": "New week starts tomorrow. What is your Excel intention?\n\nA) Building something specific and I know exactly what it is\nB) There is one skill I have been avoiding and this is finally the week\nC) Getting faster at things I already know\nD) Cleaning up files I have been ignoring for too long\n\nSay it out loud below. Monday is coming and this group is holding you to it.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sun-li-1200",
+      "date": "2026-06-01",
+      "day": "Sunday",
+      "post_time": "12:00",
+      "post_time_display": "12:00 PM",
+      "window": "Midday",
+      "platform": "LinkedIn",
+      "type": "Poll",
+      "content": "Flash Fill — be completely honest:\n\nA) I use it daily and it saves me serious time\nB) I forget it exists about half the time\nC) What is Flash Fill\nD) I tried it once, it did not work, I gave up and never went back\n\nDrop your most painful manual data cleanup that Flash Fill could probably solve in seconds.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sun-li-1800",
+      "date": "2026-06-01",
+      "day": "Sunday",
+      "post_time": "18:00",
+      "post_time_display": "6:00 PM",
+      "window": "Evening",
+      "platform": "LinkedIn",
+      "type": "This or That Poll",
+      "content": "By end of this year are you more focused on:\n\nA) Knowing more — deeper skills, more functions, more power\nB) Doing more — shipping better work faster with what you already know\n\nDrop your answer. Then drop the one Excel commitment you are making this week. Monday starts in a few hours and this group is watching.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "mon-ss-2000",
+      "date": "2026-05-26",
+      "day": "Monday",
+      "post_time": "20:00",
+      "post_time_display": "8:00 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Poll",
+      "content": "What is the Excel skill that took you the longest to feel actually confident with?\n\nA) Power Query and M code\nB) Dynamic arrays and spill behavior\nC) DAX and Power Pivot\nD) Building dashboards people actually use\n\nDrop your answer and tell me what finally made it click.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "mon-ss-2030",
+      "date": "2026-05-26",
+      "day": "Monday",
+      "post_time": "20:30",
+      "post_time_display": "8:30 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Quick Fix",
+      "content": "Your XLOOKUP is returning the wrong value and you cannot figure out why.\n\nNine times out of ten the problem is not the formula. It is the data.\n\nCheck these in order:\n\nLeading or trailing spaces in your lookup column. Fix with =TRIM(A2)\nNumbers stored as text. Fix by selecting the column → Data → Text to Columns → Finish\nCase sensitivity issues. XLOOKUP is case-insensitive but your source data might have inconsistencies that break the match logic\n\nThe fix that catches all three at once: wrap your lookup value and your search array both in TRIM and then in VALUE if you are matching numbers.\n=XLOOKUP(TRIM(A2), TRIM(lookup_range), return_range, \"Not Found\")\n\nThis one formula change has fixed more broken lookups than any other single adjustment.\n\nDrop the lookup error that has been driving you crazy. I will diagnose it in the comments.\n→ Full breakdown of XLOOKUP edge cases in Excel Flow Edition #28: https://rileystream.substack.com/p/the-four-languages-of-modern-excel",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "mon-ss-2100",
+      "date": "2026-05-26",
+      "day": "Monday",
+      "post_time": "21:00",
+      "post_time_display": "9:00 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Reader Question",
+      "content": "Real scenario from an analyst I spoke with this week:\n\"I have a sales table with 50,000 rows. I need to sum revenue by region AND by month AND exclude returns. My SUMIFS formula works but takes 45 seconds to calculate every time I change anything.\"\n\nHere is exactly what is causing it and how to fix it:\n\nThe problem is almost always one of three things. Either the sum range and criteria ranges are full column references instead of table references, or there are volatile functions elsewhere in the workbook forcing everything to recalculate, or the file has not been saved as .xlsx and is running in compatibility mode.\n\nThe fix in order:\n\n1. Convert your data to a Table (Ctrl+T) and rewrite the SUMIFS using structured references\n2. Set calculation to Manual (Formulas → Calculation Options → Manual) while you work, F9 to recalculate when ready\n3. Save as .xlsx if it is not already\n\nThe structured reference version of that formula goes from taking 45 seconds to near-instant on most machines.\n\nWhat is the slowest calculation you have ever had to sit through in Excel? Drop it below.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "tue-ss-1900",
+      "date": "2026-05-27",
+      "day": "Tuesday",
+      "post_time": "19:00",
+      "post_time_display": "7:00 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Poll",
+      "content": "You are building a model that five other people will use. What do you protect first?\n\nA) Lock the formula cells so nobody can break them\nB) Add data validation so inputs stay clean\nC) Color code inputs vs calculations so it is obvious\nD) Write documentation on a separate tab nobody will read\n\nVote and tell me what you actually do versus what you know you should do.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "tue-ss-1930",
+      "date": "2026-05-27",
+      "day": "Tuesday",
+      "post_time": "19:30",
+      "post_time_display": "7:30 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Quick Fix",
+      "content": "You are building a report that updates monthly. You are manually changing the month name in the title every single time.\n\nStop.\n\nPut this in your title cell:\n=\"Monthly Report — \"&TEXT(TODAY(),\"MMMM YYYY\")\n\nNow your report title updates itself every month automatically. Combine it with your company name:\n=\"Excel Flow Revenue Report — \"&TEXT(TODAY(),\"MMMM YYYY\")\n\nTake it further with EOMONTH to reference the previous month instead of the current one:\n=\"Report as of \"&TEXT(EOMONTH(TODAY(),-1),\"MMMM YYYY\")\n\nOne formula. Zero manual updates. Looks intentional every single time.\n\nDrop the thing you are still updating manually every month that a formula could handle.\n→ More dynamic date formulas in Excel Flow Edition #27: [Substack URL for Edition #27]",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "tue-ss-2000",
+      "date": "2026-05-27",
+      "day": "Tuesday",
+      "post_time": "20:00",
+      "post_time_display": "8:00 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Reader Question",
+      "content": "Real scenario:\n\"I have a workbook with 12 monthly sheets all with the same structure. I need a summary sheet that pulls the total from cell B47 on every sheet. I am currently writing the formula 12 times.\"\n\nHere is the one formula that replaces all 12:\n=SUM(January:December!B47)\n\nThat is a 3D reference. It sums cell B47 across every sheet between January and December in one formula. If your sheets are named differently just change the names.\n\nThe catch: 3D references do not work inside SUMIF, VLOOKUP, or most other functions. They only work with SUM, AVERAGE, COUNT, MIN, MAX and a few others.\n\nFor everything else you need either Power Query to consolidate the sheets first or a helper column approach.\n\nDrop your multi-sheet consolidation nightmare below. I will tell you whether 3D references can solve it or whether you need Power Query.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "wed-ss-0800",
+      "date": "2026-05-28",
+      "day": "Wednesday",
+      "post_time": "08:00",
+      "post_time_display": "8:00 AM",
+      "window": "Morning",
+      "platform": "Substack",
+      "type": "Poll",
+      "content": "Power Query — where are you honestly?\n\nA) Use it daily. It changed my life.\nB) Know how it works but rarely use it\nC) Have tried it but got confused and went back to manual\nD) Have never opened it and I am not sure where it even is\n\nDrop your answer and tell me the data cleaning task that finally pushed you to learn it or the one that made you give up.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "wed-ss-1200",
+      "date": "2026-05-28",
+      "day": "Wednesday",
+      "post_time": "12:00",
+      "post_time_display": "12:00 PM",
+      "window": "Midday",
+      "platform": "Substack",
+      "type": "Quick Fix",
+      "content": "You got a CSV export with dates that Excel refuses to recognize as dates. They look like dates. They are not dates. Nothing works.\n\nThis happens because the dates are stored as text in a format Excel does not automatically parse. Here is the fastest fix:\n\nIf your dates look like 2026-05-28:\nSelect the column → Data → Text to Columns → Delimited → Next → Next → choose Date → select YMD → Finish\n\nIf your dates look like 28/05/2026 (day first):\nSame process but choose DMY instead of YMD\n\nIf neither works add a helper column with:\n=DATEVALUE(TEXT(A2,\"YYYY-MM-DD\"))\nThen copy → paste special → values only → delete the original column.\n\nThis fixes 95% of broken date imports in under two minutes.\n\nDrop your worst date formatting horror story below.\n→ Full Power Query data cleaning walkthrough in Excel Flow Edition #25: https://rileystream.substack.com/p/mynda-treacy-the-1-excel-mistake",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "wed-ss-2000",
+      "date": "2026-05-28",
+      "day": "Wednesday",
+      "post_time": "20:00",
+      "post_time_display": "8:00 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Reader Question",
+      "content": "Real scenario:\n\"I need to highlight every row in my table where the deadline has passed AND the status is not marked complete. Conditional formatting is only highlighting some of the rows not all of them.\"\n\nThe fix:\nYour conditional formatting rule is probably applied to only the first column instead of the entire row. Here is the exact setup:\n\n1. Select your entire table range first — for example A2:F100\n2. Go to Conditional Formatting → New Rule → Use a formula\n3. Enter this formula:\n=AND($E2<TODAY(),$F2<>\"Complete\")\n\nThe dollar sign before the column letter ($E and $F) locks the column but lets the row shift. No dollar sign before the row number (2) lets the formatting check each row independently.\n\nThis is the single most common conditional formatting mistake and it causes exactly the symptom you described.\n\nDrop your conditional formatting question below. If it is broken I will rewrite the rule for you.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "thu-ss-1800",
+      "date": "2026-05-29",
+      "day": "Thursday",
+      "post_time": "18:00",
+      "post_time_display": "6:00 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Poll",
+      "content": "Honest question. What does your average Excel workbook look like when you first open it in the morning?\n\nA) Organized, documented, exactly where I left it\nB) Functional but I am the only one who understands it\nC) A collection of decisions I made under deadline pressure\nD) I try not to think about it\n\nDrop your answer and tell me the one thing you would go back and fix if you had the time.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "thu-ss-1830",
+      "date": "2026-05-29",
+      "day": "Thursday",
+      "post_time": "18:30",
+      "post_time_display": "6:30 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Quick Fix",
+      "content": "You are using COUNTIF to count unique values. It is giving you the wrong number.\n\nCOUNTIF counts occurrences not unique values. Here is the formula that actually counts uniques:\n=SUMPRODUCT(1/COUNTIF(A2:A100,A2:A100))\n\nHow it works: COUNTIF returns how many times each value appears. Dividing 1 by that number gives you a fraction. SUMPRODUCT adds all the fractions. The math works out so that duplicates cancel and you get the true unique count.\n\nThe limitation: this breaks if there are blank cells. Add an IF to handle blanks:\n=SUMPRODUCT((A2:A100<>\"\")/COUNTIF(A2:A100,A2:A100&\"\"))\n\nIf you are on a version of Excel with dynamic arrays use this instead — it is cleaner:\n=COUNTA(UNIQUE(A2:A100))\n\nDrop the counting problem you have been solving with a workaround.\n→ Dynamic array functions deep dive in Excel Flow Edition #27: [Substack URL for Edition #27]",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "thu-ss-1900",
+      "date": "2026-05-29",
+      "day": "Thursday",
+      "post_time": "19:00",
+      "post_time_display": "7:00 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Reader Question",
+      "content": "Real scenario:\n\"My manager asked me to build a report that automatically emails itself every Monday morning. I know Excel can do this but I have no idea where to start.\"\n\nHere is the honest answer:\nExcel alone cannot send emails. You need one of these three approaches depending on what your company uses:\n\nOption 1 — Power Automate (if your company uses Microsoft 365). Build a scheduled flow that opens your Excel file, refreshes the data, and sends it as an attachment. No code required. Takes about 20 minutes to set up.\n\nOption 2 — VBA + Outlook. If you have Outlook and want everything inside Excel, you can write a VBA macro that sends the file. Requires Outlook to be open on your machine when it runs.\n\nOption 3 — Python script scheduled with Windows Task Scheduler. Most powerful and most portable. Takes longer to set up but runs without any Microsoft apps being open.\n\nFor most analysts at a company using Microsoft 365, Option 1 is the answer. It is free, requires no IT approval in most organizations, and takes less than half an hour.\n\nDrop the Excel automation task you have been meaning to set up. I will tell you which approach fits your situation.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "fri-ss-1900",
+      "date": "2026-05-30",
+      "day": "Friday",
+      "post_time": "19:00",
+      "post_time_display": "7:00 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Poll",
+      "content": "End of week. What Excel thing are you leaving unfinished on your desk today?\n\nA) A dashboard I started but could not get clean in time\nB) A formula I could not get to work and ran out of patience\nC) A file I inherited and still do not fully understand\nD) Something I should have automated months ago\n\nDrop it below. Let this community help you finish it or at least make peace with it.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "fri-ss-1930",
+      "date": "2026-05-30",
+      "day": "Friday",
+      "post_time": "19:30",
+      "post_time_display": "7:30 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Quick Fix",
+      "content": "You are building a dashboard and your pivot table numbers do not match your raw data totals. This is one of the most stressful things that happens in Excel and it almost always has one of four causes.\n\nCheck these in order:\n\n1. Your pivot table data source range does not include all the rows. Right click the pivot → Change Data Source → make sure the range covers everything including new rows added since you built it.\n2. You have filters applied to your source data. Pivot tables include filtered-out rows in their totals. Clear all filters from the source before refreshing.\n3. There are duplicates in a column the pivot is summing by. It is summing correctly but you are comparing it to a number that was manually de-duplicated.\n4. The date field is grouping by month when you expect it to be grouping by individual date. Right click the date column in the pivot → Ungroup.\n\nWork through these four in five minutes and 90% of pivot discrepancies resolve themselves.\n\nDrop your worst \"the numbers do not match\" story below.\n→ Full dashboard build walkthrough in Excel Flow Edition #30: [Substack URL for Edition #30]",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "fri-ss-2000",
+      "date": "2026-05-30",
+      "day": "Friday",
+      "post_time": "20:00",
+      "post_time_display": "8:00 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Reader Question",
+      "content": "Real scenario:\n\"I need to pull data from 15 different Excel files all sitting in the same folder. They all have the same structure. Right now I copy and paste from each one manually every week.\"\n\nThis is exactly what Power Query was built for.\n\nHere is the approach in four steps:\n\n1. Data → Get Data → From File → From Folder\n2. Select the folder containing all 15 files\n3. Power Query loads a preview of every file. Click Combine → Combine and Transform\n4. Power Query opens one file as a sample. Clean it once — remove columns, rename headers, set data types. Click Close and Load.\n\nNow every week you just click Refresh and Power Query pulls all 15 files, applies your cleaning steps, and loads the combined data in seconds.\n\nThe one requirement: every file needs the same structure. If the headers or column order differ between files you need to add a normalization step in Power Query first.\n\nDrop the multi-file consolidation task you are still doing manually. I will walk you through whether this approach solves it.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sat-ss-1630",
+      "date": "2026-05-31",
+      "day": "Saturday",
+      "post_time": "16:30",
+      "post_time_display": "4:30 PM",
+      "window": "Midday",
+      "platform": "Substack",
+      "type": "Poll",
+      "content": "What is the Excel thing you are working on this weekend that has nothing to do with your job?\n\nA) A personal budget or financial tracker\nB) A fantasy sports or fitness tracking spreadsheet\nC) A side project or small business model\nD) I do not touch Excel on weekends and I am at peace with that\n\nDrop what you are building if you are in the A, B, or C camp. Always interesting to see what this community does with Excel outside of work.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sat-ss-1700",
+      "date": "2026-05-31",
+      "day": "Saturday",
+      "post_time": "17:00",
+      "post_time_display": "5:00 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Quick Fix",
+      "content": "Your personal budget spreadsheet breaks every month because you are manually entering the month name and changing date ranges.\n\nFix it once and never touch it again.\n\nPut this in your month header cell:\n=TEXT(DATE(YEAR(TODAY()),MONTH(TODAY()),1),\"MMMM YYYY\")\n\nPut this in your start date cell:\n=DATE(YEAR(TODAY()),MONTH(TODAY()),1)\n\nPut this in your end date cell:\n=EOMONTH(TODAY(),0)\n\nNow every formula that references those cells updates automatically on the first of each month. Your budget resets itself. Your date ranges update themselves. You open it on June 1st and it already says June.\n\nDrop the personal spreadsheet you wish you had built this way from the start.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sat-ss-1730",
+      "date": "2026-05-31",
+      "day": "Saturday",
+      "post_time": "17:30",
+      "post_time_display": "5:30 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Reader Question",
+      "content": "Real scenario:\n\"I track my expenses in Excel. I want to automatically categorize each transaction as Food, Transport, Rent, etc. based on the description column. Right now I do it manually.\"\n\nHere is the formula approach:\n=IFS(\nISNUMBER(SEARCH(\"Uber\",A2)),\"Transport\",\nISNUMBER(SEARCH(\"Lyft\",A2)),\"Transport\",\nISNUMBER(SEARCH(\"Whole Foods\",A2)),\"Food\",\nISNUMBER(SEARCH(\"Trader Joe\",A2)),\"Food\",\nISNUMBER(SEARCH(\"Rent\",A2)),\"Housing\",\nTRUE,\"Uncategorized\"\n)\n\nHow it works: SEARCH looks for each keyword inside the description. ISNUMBER checks if it found something. IFS runs through your rules in order and returns the first match. The TRUE at the end is the catch-all for anything that does not match.\n\nAdd as many keyword rules as you need. The more specific your keywords the more accurate your categorization.\n\nDrop your expense categorization nightmare below. If your descriptions are inconsistent I will show you how to handle that too.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sun-ss-1930",
+      "date": "2026-06-01",
+      "day": "Sunday",
+      "post_time": "19:30",
+      "post_time_display": "7:30 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Poll",
+      "content": "New week starting. What is the one Excel skill you are committing to actually practicing this week?\n\nA) Power Query — I keep saying I will learn it and I never do\nB) Dynamic arrays — FILTER, SORT, UNIQUE, SEQUENCE\nC) Building a proper dashboard from scratch\nD) Getting faster with keyboard shortcuts until they are automatic\n\nDrop yours and tell me what specifically you are going to do this week to make it real. Not just \"practice it.\" The actual thing you are going to build or fix.",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sun-ss-2000",
+      "date": "2026-06-01",
+      "day": "Sunday",
+      "post_time": "20:00",
+      "post_time_display": "8:00 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Quick Fix",
+      "content": "You are using keyboard shortcuts but you are still reaching for the mouse constantly because you have not learned the ones that matter most.\n\nThese five eliminate 80% of mouse usage for the average analyst:\n\nCtrl+Shift+L — toggle filters on and off\nCtrl+T — convert selection to Table instantly\nAlt+= — AutoSum the selected range\nCtrl+Shift+End — select from current cell to last used cell\nF4 — repeat last action (the most underused key in Excel)\n\nThe F4 one specifically. If you just formatted a cell, applied a border, inserted a row — press F4 and Excel does it again to whatever is selected next. Chained with Ctrl+clicking multiple cells this replaces dozens of repetitive formatting steps.\n\nDrop the mouse habit you most want to break.\n→ Full keyboard shortcut system in Excel Flow Edition #22: [Substack URL for Edition #22]",
+      "first_comment": null,
+      "is_test_poll": false
+    },
+    {
+      "id": "sun-ss-2030",
+      "date": "2026-06-01",
+      "day": "Sunday",
+      "post_time": "20:30",
+      "post_time_display": "8:30 PM",
+      "window": "Evening",
+      "platform": "Substack",
+      "type": "Reader Question",
+      "content": "Real scenario:\n\"I have a list of 5,000 product names. Some are all caps, some are all lowercase, some are mixed. I need them all in proper title case.\"\n\nOne formula:\n=PROPER(A2)\n\nThat is it. PROPER converts any text to Title Case where the first letter of each word is capitalized.\n\nThe catch: PROPER capitalizes the first letter after every space including things you might not want like \"Xlookup\" becoming \"Xlookup\" instead of \"XLOOKUP.\" For those cases you need a follow-up SUBSTITUTE:\n=SUBSTITUTE(PROPER(A2),\"Xlookup\",\"XLOOKUP\")\n\nFor a full name cleaning pipeline that handles TRIM, PROPER, and common inconsistencies in one column:\n=PROPER(TRIM(SUBSTITUTE(A2,\"  \",\" \")))\n\nThis removes extra spaces, collapses double spaces, and proper-cases everything in a single formula.\n\nDrop your worst data cleaning scenario below. If it involves text inconsistencies I will build you the formula live in the comments.",
+      "first_comment": null,
+      "is_test_poll": false
+    }
+  ]
+}
