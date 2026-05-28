@@ -10,7 +10,7 @@
       "window": "Morning",
       "platform": "LinkedIn",
       "type": "Poll",
-      "content": "When someone sends you an Excel file with no context, what is the first tab you open?\n\nA) Whatever tab is active when it opens\nB) The most recently modified sheet\nC) A tab called README or Instructions if it exists\nD) I close it and ask them what they actually need\n\nDrop the worst \"here is the file, good luck\" handoff you have ever received.",
+      "content": "When someone sends you an Excel file with no context, what is the first tab you open?\n\nA) Whatever tab is active\nB) Most recent modified sheet\nC) README or Instructions tab\nD) Ask what they actually need\n\nDrop the worst \"here is the file, good luck\" handoff you have ever received.",
       "first_comment": "Bonus — this week's Excel Flow edition with Mike Girvin covers the four languages of modern Excel and exactly which one to reach for in situations like this.\nhttps://rileystream.substack.com/p/the-four-languages-of-modern-excel — free, no email required.",
       "first_comment_time_display": "7:31 AM",
       "is_test_poll": true
@@ -131,7 +131,7 @@
       "window": "Midday",
       "platform": "LinkedIn",
       "type": "This or That Poll",
-      "content": "When you build a spreadsheet for someone else do you:\n\nA) Build it how you would want it if you were using it\nB) Ask them exactly how they work and build it around that\n\nDrop the last time your assumption about what someone needed turned out to be completely wrong.",
+      "content": "When you build a spreadsheet for someone else do you:\n\nA) Build how I would want it\nB) Ask them and build around it\n\nDrop the last time your assumption about what someone needed turned out to be completely wrong.",
       "first_comment": null,
       "is_test_poll": false
     },
@@ -144,7 +144,7 @@
       "window": "Morning",
       "platform": "LinkedIn",
       "type": "Poll",
-      "content": "What Excel skill do people at your company most often come to you for help with?\n\nA) They broke a formula and need it fixed\nB) They need a pivot table built or explained\nC) They need data cleaned and do not know how\nD) They need a dashboard by end of day\n\nDrop your answer and tell me if being the Excel person at your company is a blessing or a curse.",
+      "content": "What Excel skill do people at your company most often come to you for help with?\n\nA) Broken formula needs fixing\nB) Pivot table built or explained\nC) Data cleaning help\nD) Dashboard by end of day\n\nDrop your answer and tell me if being the Excel person at your company is a blessing or a curse.",
       "first_comment": "Bonus — Mynda Treacy (Microsoft Excel MVP) covered exactly why most Excel pros are helping people fix problems that should never have existed in the first place — structured foundations prevent 80% of the fires.\nhttps://rileystream.substack.com/p/mynda-treacy-the-1-excel-mistake",
       "first_comment_time_display": "7:31 AM",
       "is_test_poll": true
@@ -171,7 +171,7 @@
       "window": "Midday",
       "platform": "LinkedIn",
       "type": "Poll",
-      "content": "Your pivot table totals do not match your raw data. What do you check first?\n\nA) The data source range is missing rows\nB) There are filters applied to the source data\nC) The date field is grouping incorrectly\nD) I refresh it three times and hope it fixes itself\n\nDrop the pivot table discrepancy that took you the longest to diagnose.",
+      "content": "Your pivot table totals do not match your raw data. What do you check first?\n\nA) Source range missing rows\nB) Filters on source data\nC) Date field grouping wrong\nD) Refresh and hope it fixes\n\nDrop the pivot table discrepancy that took you the longest to diagnose.",
       "first_comment": "Full pivot table troubleshooting framework — including the four causes that explain 90% of discrepancies — in Excel Flow Edition #30.\n[Substack URL for Edition #30]",
       "first_comment_time_display": "12:01 PM",
       "is_test_poll": true
@@ -185,7 +185,7 @@
       "window": "Morning",
       "platform": "LinkedIn",
       "type": "Poll",
-      "content": "Power Query — be completely honest. Where are you with it right now?\n\nA) Use it daily. It is the single best thing in Excel.\nB) Know how it works but only use it occasionally\nC) Have tried it, got confused, went back to manual\nD) Have never opened it and I know I should\n\nDrop your answer and tell me the data task that either converted you or the one that still makes you do it manually.",
+      "content": "Power Query — be completely honest. Where are you with it right now?\n\nA) Daily — best thing in Excel\nB) Know it, use occasionally\nC) Tried, confused, went manual\nD) Never opened it\n\nDrop your answer and tell me the data task that either converted you or the one that still makes you do it manually.",
       "first_comment": "Bonus — Mynda Treacy's take on why Power Query is the most skipped feature by analysts who would benefit from it most — and the exact use case that makes it click.\nhttps://rileystream.substack.com/p/mynda-treacy-the-1-excel-mistake",
       "first_comment_time_display": "7:31 AM",
       "is_test_poll": true
@@ -302,7 +302,7 @@
       "window": "Midday",
       "platform": "LinkedIn",
       "type": "This or That Poll",
-      "content": "Are you still using merged cells?\n\nA) Yes and they work fine for me\nB) Stopped after they broke a sort and I learned my lesson\nC) Never used them\nD) What exactly is wrong with merged cells\n\nDrop your answer and if you picked A tell me what you are building that makes you confident in that choice.",
+      "content": "Are you still using merged cells?\n\nA) Yes, they work fine for me\nB) Stopped after a sort broke\nC) Never used them\nD) What's wrong with merged cells\n\nDrop your answer and if you picked A tell me what you are building that makes you confident in that choice.",
       "first_comment": null,
       "is_test_poll": false
     },
@@ -315,7 +315,7 @@
       "window": "Morning",
       "platform": "LinkedIn",
       "type": "Poll",
-      "content": "What is your honest relationship with VBA and macros in 2026?\n\nA) Use them regularly. Still essential for certain things.\nB) Know they exist but Power Query handles everything I need\nC) Tried once, broke something, never went back\nD) Actively moving everything to Python and not looking back\n\nDrop your answer and tell me whether you think learning VBA today is still worth the time investment.",
+      "content": "What is your honest relationship with VBA and macros in 2026?\n\nA) Regularly — still essential\nB) Power Query handles my needs\nC) Tried once, broke, gave up\nD) Moving to Python instead\n\nDrop your answer and tell me whether you think learning VBA today is still worth the time investment.",
       "first_comment": "Bonus — Alan Murray (Computergaga, 300K+ YouTube subscribers, 25+ years teaching Excel) gave the most direct answer I have heard on this exact question in Excel Flow Edition #29.\nhttps://rileystream.substack.com/p/alan-murray-computergaga-get-ridiculously",
       "first_comment_time_display": "7:31 AM",
       "is_test_poll": true
@@ -342,7 +342,7 @@
       "window": "Midday",
       "platform": "LinkedIn",
       "type": "Poll",
-      "content": "FP&A and finance people — what does your Excel model look like when deadline hits?\n\nA) Clean, documented, and I could hand it to anyone\nB) Functional but only I fully understand the logic\nC) A collection of decisions made under pressure I plan to clean up later\nD) I do not look at it too closely on deadline day\n\nDrop the model habit you are most proud of and the one you are most embarrassed by.",
+      "content": "FP&A and finance people — what does your Excel model look like when deadline hits?\n\nA) Clean — could hand to anyone\nB) Functional, only I get it\nC) Made under pressure\nD) Don't look too closely\n\nDrop the model habit you are most proud of and the one you are most embarrassed by.",
       "first_comment": "Carl Seidman's take on what actually separates good financial models from dangerous ones — Excel Flow Edition #26.\nhttps://rileystream.substack.com/p/carl-seidman-why-excel-skills-dont",
       "first_comment_time_display": "12:01 PM",
       "is_test_poll": true
@@ -356,7 +356,7 @@
       "window": "Midday",
       "platform": "LinkedIn",
       "type": "This or That Poll",
-      "content": "On deadline day do you:\n\nA) Power through the formula work because that is where you live\nB) Copy paste and manually fix because at least you know it will work\n\nDrop the function that has saved you the most on deadline day specifically.",
+      "content": "On deadline day do you:\n\nA) Power through formula work\nB) Copy paste and manually fix\n\nDrop the function that has saved you the most on deadline day specifically.",
       "first_comment": null,
       "is_test_poll": false
     },
@@ -369,7 +369,7 @@
       "window": "Morning",
       "platform": "LinkedIn",
       "type": "Poll",
-      "content": "End of week check. What best describes your Excel week?\n\nA) Built something I am genuinely proud of\nB) Fixed someone else's mess and got no credit for it\nC) Learned something I did not expect to need\nD) Opened a file on Friday afternoon that should not legally exist\n\nDrop the one Excel thing from this week you are either proud of or still recovering from.",
+      "content": "End of week check. What best describes your Excel week?\n\nA) Built something I'm proud of\nB) Fixed mess, got no credit\nC) Learned something unexpected\nD) Opened a cursed Friday file\n\nDrop the one Excel thing from this week you are either proud of or still recovering from.",
       "first_comment": "Mike Girvin's framework for knowing which Excel tool to reach for — formulas, PivotTables, DAX, or Power Query — so you stop using the wrong one for the job.\nhttps://rileystream.substack.com/p/the-four-languages-of-modern-excel",
       "first_comment_time_display": "7:31 AM",
       "is_test_poll": true
@@ -479,7 +479,7 @@
       "window": "Midday",
       "platform": "LinkedIn",
       "type": "This or That Poll",
-      "content": "When you leave work today is your Excel:\n\nA) Cleaner and more organized than when you started Monday\nB) More complicated with tabs you will have to explain to your future self\n\nDrop the Excel tip you want to leave this group with going into the weekend.",
+      "content": "When you leave work today is your Excel:\n\nA) Cleaner than Monday\nB) More tabs to explain later\n\nDrop the Excel tip you want to leave this group with going into the weekend.",
       "first_comment": null,
       "is_test_poll": false
     },
@@ -492,7 +492,7 @@
       "window": "Morning",
       "platform": "LinkedIn",
       "type": "Poll",
-      "content": "Saturday question for the people who cannot fully switch off. What is your Excel goal for the rest of 2026?\n\nA) Finally learn Power Query properly\nB) Get comfortable with dynamic arrays and LAMBDA\nC) Build a dashboard I am actually proud to show someone\nD) Get fast enough to be the quickest person on my team\n\nDrop one specific thing you are doing this weekend toward that goal.",
+      "content": "Saturday question for the people who cannot fully switch off. What is your Excel goal for the rest of 2026?\n\nA) Learn Power Query properly\nB) Dynamic arrays and LAMBDA\nC) Dashboard I am proud of\nD) Fastest person on my team\n\nDrop one specific thing you are doing this weekend toward that goal.",
       "first_comment": null,
       "is_test_poll": false
     },
@@ -505,7 +505,7 @@
       "window": "Morning",
       "platform": "LinkedIn",
       "type": "Poll",
-      "content": "Slowest Excel file you ever inherited. What was the cause?\n\nA) Volatile functions like NOW and OFFSET everywhere\nB) Conditional formatting rules applied to entire columns\nC) External links pointing to files that no longer exist\nD) I genuinely never figured out what was wrong with it\n\nDrop the file performance nightmare and what you did to fix it.",
+      "content": "Slowest Excel file you ever inherited. What was the cause?\n\nA) Volatile funcs (NOW, OFFSET)\nB) Conditional formatting bloat\nC) Broken external links\nD) Never figured it out\n\nDrop the file performance nightmare and what you did to fix it.",
       "first_comment": null,
       "is_test_poll": false
     },
@@ -518,7 +518,7 @@
       "window": "Midday",
       "platform": "LinkedIn",
       "type": "This or That Poll",
-      "content": "When you want to learn something new in Excel do you get more from:\n\nA) A structured course that takes you through everything in order\nB) Having a real problem that forces you to figure it out right now\n\nDrop your answer and share the single best Excel resource you have ever found. One each. Let us build the definitive list right here.",
+      "content": "When you want to learn something new in Excel do you get more from:\n\nA) Structured course in order\nB) Real problem forces you\n\nDrop your answer and share the single best Excel resource you have ever found. One each. Let us build the definitive list right here.",
       "first_comment": null,
       "is_test_poll": false
     },
@@ -531,7 +531,7 @@
       "window": "Morning",
       "platform": "LinkedIn",
       "type": "Poll",
-      "content": "New week starts tomorrow. What is your Excel intention?\n\nA) Building something specific and I know exactly what it is\nB) There is one skill I have been avoiding and this is finally the week\nC) Getting faster at things I already know\nD) Cleaning up files I have been ignoring for too long\n\nSay it out loud below. Monday is coming and this group is holding you to it.",
+      "content": "New week starts tomorrow. What is your Excel intention?\n\nA) Specific build I have planned\nB) Finally tackle a skill gap\nC) Faster at what I know\nD) Clean up neglected files\n\nSay it out loud below. Monday is coming and this group is holding you to it.",
       "first_comment": null,
       "is_test_poll": false
     },
@@ -544,7 +544,7 @@
       "window": "Midday",
       "platform": "LinkedIn",
       "type": "Poll",
-      "content": "Flash Fill — be completely honest:\n\nA) I use it daily and it saves me serious time\nB) I forget it exists about half the time\nC) What is Flash Fill\nD) I tried it once, it did not work, I gave up and never went back\n\nDrop your most painful manual data cleanup that Flash Fill could probably solve in seconds.",
+      "content": "Flash Fill — be completely honest:\n\nA) Daily — saves serious time\nB) Forget it exists half the time\nC) What is Flash Fill\nD) Tried once, gave up\n\nDrop your most painful manual data cleanup that Flash Fill could probably solve in seconds.",
       "first_comment": null,
       "is_test_poll": false
     },
@@ -557,7 +557,7 @@
       "window": "Evening",
       "platform": "LinkedIn",
       "type": "This or That Poll",
-      "content": "By end of this year are you more focused on:\n\nA) Knowing more — deeper skills, more functions, more power\nB) Doing more — shipping better work faster with what you already know\n\nDrop your answer. Then drop the one Excel commitment you are making this week. Monday starts in a few hours and this group is watching.",
+      "content": "By end of this year are you more focused on:\n\nA) Knowing more — deeper skills\nB) Doing more — ship faster\n\nDrop your answer. Then drop the one Excel commitment you are making this week. Monday starts in a few hours and this group is watching.",
       "first_comment": null,
       "is_test_poll": false
     },

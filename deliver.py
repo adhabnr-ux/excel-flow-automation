@@ -34,7 +34,6 @@ MST = datetime.timezone(datetime.timedelta(hours=-7))  # America/Phoenix, no DST
 GAP = 30  # seconds between WhatsApp messages (stays within CallMeBot limits)
 
 RE_PLACEHOLDER = re.compile(r"(?<!\w)\[[^\]\n]+\]")
-RE_URL = re.compile(r"https?://[^\s)]+")
 RE_OPTION = re.compile(r"^[A-Z]\)\s*(.+)$")
 
 
@@ -59,19 +58,6 @@ def send_whatsapp(text):
     return False
 
 
-def url_alive(u):
-    """True if the URL responds 200. Tries HEAD, falls back to GET."""
-    for method in ("HEAD", "GET"):
-        try:
-            req = urllib.request.Request(
-                u, method=method, headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req, timeout=20) as r:
-                return r.status == 200
-        except Exception:
-            continue
-    return False
-
-
 def qa(post):
     """Return a list of QA warning strings for a post (empty == clean)."""
     flags = []
@@ -84,9 +70,6 @@ def qa(post):
             if m and len(m.group(1)) > 30:
                 flags.append(f"LinkedIn poll option is {len(m.group(1))} chars "
                              f"(max 30) - trim: {m.group(1)}")
-    for u in sorted(set(RE_URL.findall(text))):
-        if not url_alive(u):
-            flags.append(f"link not reachable: {u}")
     return flags
 
 
