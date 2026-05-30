@@ -4,16 +4,16 @@
 Usage:  python3 deliver.py <Morning|Midday|Evening>
 
 Reads every content/week-*.json, finds the posts dated today (America/Phoenix)
-in the given window, QA-checks them, and sends each as a WhatsApp message via
-CallMeBot. Fully deterministic — no AI, no rewriting. Post content is delivered
-byte-for-byte. Carousels are pre-rendered PDFs already committed under
-carousels/; their public raw URL is delivered.
+in the given window, QA-checks them, and sends each as a Telegram message via
+the Bot API. Fully deterministic — no AI, no rewriting. Post content is
+delivered byte-for-byte. Carousels are pre-rendered PDFs already committed
+under carousels/; their public raw URL is delivered.
 
 Environment:
-  CALLMEBOT_PHONE    CallMeBot phone number   (from GitHub Secrets)
-  CALLMEBOT_APIKEY   CallMeBot API key        (from GitHub Secrets)
-  GITHUB_REPOSITORY  owner/repo               (set automatically by Actions)
-  GITHUB_REF_NAME    branch name              (set automatically by Actions)
+  TELEGRAM_BOT_TOKEN  Telegram bot token         (from GitHub Secrets)
+  TELEGRAM_CHAT_ID    Telegram chat/user ID      (from GitHub Secrets)
+  GITHUB_REPOSITORY   owner/repo                 (set automatically by Actions)
+  GITHUB_REF_NAME     branch name                (set automatically by Actions)
 """
 import datetime
 import glob
@@ -22,16 +22,15 @@ import os
 import re
 import sys
 import time
-import urllib.parse
 import urllib.request
 
-PHONE = os.environ.get("CALLMEBOT_PHONE", "").strip()
-APIKEY = os.environ.get("CALLMEBOT_APIKEY", "").strip()
+BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 REPO = os.environ.get("GITHUB_REPOSITORY", "").strip()
 REF = os.environ.get("GITHUB_REF_NAME", "main").strip() or "main"
 
 MST = datetime.timezone(datetime.timedelta(hours=-7))  # America/Phoenix, no DST
-GAP = 30  # seconds between WhatsApp messages (stays within CallMeBot limits)
+GAP = 2  # seconds between Telegram messages (no rate issues, small gap for ordering)
 
 RE_PLACEHOLDER = re.compile(r"(?<!\w)\[[^\]\n]+\]")
 RE_OPTION = re.compile(r"^[A-Z]\)\s*(.+)$")
@@ -41,20 +40,22 @@ def log(*a):
     print(*a, flush=True)
 
 
-def send_whatsapp(text):
-    """Send one WhatsApp message via CallMeBot. Retries up to 3x. Returns bool."""
-    query = urllib.parse.urlencode({"phone": PHONE, "apikey": APIKEY, "text": text})
-    url = "https://api.callmebot.com/whatsapp.php?" + query
+def send_telegram(text):
+    """Send one Telegram message via Bot API. Retries up to 3x. Returns bool."""
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    payload = json.dumps({"chat_id": CHAT_ID, "text": text}).encode()
     for attempt in (1, 2, 3):
         try:
-            with urllib.request.urlopen(url, timeout=40) as r:
-                body = r.read().decode("utf-8", "ignore")
+            req = urllib.request.Request(
+                url, data=payload, headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=40) as r:
                 if r.status == 200:
                     return True
+                body = r.read().decode("utf-8", "ignore")
                 log(f"  send attempt {attempt}: HTTP {r.status} {body[:120]}")
         except Exception as e:
             log(f"  send attempt {attempt} failed: {e}")
-        time.sleep(10)
+        time.sleep(5)
     return False
 
 
@@ -81,10 +82,10 @@ def carousel_url(post):
 
 
 def messages_for(post, flags):
-    """Build the ordered WhatsApp messages for one post.
+    """Build the ordered Telegram messages for one post.
 
-    Every post sends as two bubbles: (1) header/instructions, (2) content only.
-    This lets the user long-press bubble 2 and copy clean text with no metadata.
+    Every post sends as two messages: (1) header/instructions, (2) content only.
+    Tap-and-hold message 2 to copy clean text with no metadata.
     """
     plat = post["platform"]
     flagblock = "".join("\n⚠️ " + f for f in flags)
@@ -92,32 +93,23 @@ def messages_for(post, flags):
 
     if post["type"] == "Carousel":
         link = carousel_url(post) or "(carousel PDF link unavailable)"
-        # Bubble 1 — instructions + PDF link (not copy-pasteable, keep together)
         msgs.append(
             f"📅 EXCEL FLOW\n{plat} · {post['post_time_display']} · CAROUSEL POST"
             f"{flagblock}\n\n🎨 Download this PDF, then upload to LinkedIn as a "
             f"document post:\n{link}")
-        # Bubble 2 — caption label
         msgs.append(f"📅 EXCEL FLOW · CAROUSEL CAPTION\n{plat} · {post['post_time_display']} · copy this into the post text 👇")
-        # Bubble 3 — clean caption content only
         msgs.append(post["content"])
         if post.get("first_comment"):
-            # Bubble 4 — first comment label
-            msgs.append(f"📅 EXCEL FLOW · CAROUSEL FIRST COMMENT\nPost within 60s of publishing 👇")
-            # Bubble 5 — clean first comment content only
+            msgs.append("📅 EXCEL FLOW · CAROUSEL FIRST COMMENT\nPost within 60s of publishing 👇")
             msgs.append(post["first_comment"])
         return msgs
 
-    # Bubble 1 — header + context (platform, time, type, QA flags)
     head = f"📅 EXCEL FLOW\n{plat} · {post['post_time_display']} · {post['type']}"
     msgs.append(f"{head}{flagblock}")
-    # Bubble 2 — clean content only (long-press and copy this)
     msgs.append(post["content"])
     if post.get("is_test_poll") and post.get("first_comment"):
         when = post.get("first_comment_time_display") or "right after the poll"
-        # Bubble 3 — first comment label
         msgs.append(f"📅 EXCEL FLOW · FIRST COMMENT\n{plat} · post within 60s, at {when} 👇")
-        # Bubble 4 — clean first comment content only
         msgs.append(post["first_comment"])
     return msgs
 
@@ -129,8 +121,8 @@ def main():
     today = datetime.datetime.now(MST).strftime("%Y-%m-%d")
     log(f"Excel Flow delivery — window={window} date={today} (America/Phoenix)")
 
-    if not PHONE or not APIKEY:
-        sys.exit("ERROR: CALLMEBOT_PHONE / CALLMEBOT_APIKEY not set in Secrets.")
+    if not BOT_TOKEN or not CHAT_ID:
+        sys.exit("ERROR: TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not set in Secrets.")
 
     posts = []
     for f in sorted(glob.glob("content/week-*.json")):
@@ -141,7 +133,7 @@ def main():
     log(f"{len(batch)} post(s) in batch: {[p['id'] for p in batch]}")
 
     if not batch:
-        send_whatsapp(f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} "
+        send_telegram(f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} "
                       f"window today ({today}).")
         return
 
@@ -157,14 +149,12 @@ def main():
 
     sent = 0
     for i, m in enumerate(queue):
-        ok = send_whatsapp(m)
+        ok = send_telegram(m)
         sent += ok
         log(f"message {i + 1}/{len(queue)}: {'sent' if ok else 'FAILED'}")
         if i < len(queue) - 1:
             time.sleep(GAP)
 
-    # Full report -> visible in the Actions run log. This is the fallback if a
-    # WhatsApp message did not arrive.
     log("\n===== FULL BATCH REPORT (fallback) =====")
     for p in batch:
         log(f"\n--- {p['id']} | {p['platform']} | {p['post_time_display']} | "
@@ -179,8 +169,4 @@ def main():
     log(f"\n{sent}/{len(queue)} messages delivered.")
 
     if sent < len(queue):
-        sys.exit(1)  # fail the run so GitHub emails you about the miss
-
-
-if __name__ == "__main__":
-    main()
+        sys.exit(1)
