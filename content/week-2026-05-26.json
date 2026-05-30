@@ -172,7 +172,7 @@
       "platform": "LinkedIn",
       "type": "Poll",
       "content": "Your pivot table totals do not match your raw data. What do you check first?\n\nA) Source range missing rows\nB) Filters on source data\nC) Date field grouping wrong\nD) Refresh and hope it fixes\n\nDrop the pivot table discrepancy that took you the longest to diagnose.",
-      "first_comment": "Full pivot table troubleshooting framework — including the four causes that explain 90% of discrepancies — in Excel Flow Edition #30.\n[Substack URL for Edition #30]",
+      "first_comment": "Full pivot table troubleshooting framework — including the four causes that explain 90% of discrepancies — in Excel Flow Edition #30.\nhttps://open.substack.com/pub/rileystream/p/chris-reilly-business-knowledge-not?r=7gk5to&utm_campaign=post&utm_medium=web",
       "first_comment_time_display": "12:01 PM",
       "is_test_poll": true
     },
@@ -384,7 +384,7 @@
       "platform": "LinkedIn",
       "type": "Carousel",
       "content": "How to build an Excel dashboard in under an hour.\nNo VBA. No prior experience. Step by step system that actually works.\nSwipe through and save this for the next time someone asks you for a dashboard 👇",
-      "first_comment": "Full dashboard build with the exact PivotTable, slicer, and chart setup — plus the KPI selection framework — in Excel Flow Edition #30.\n[Substack URL for Edition #30]\nAffiliate note: Maven Analytics is referenced. Link in the edition.",
+      "first_comment": "Full dashboard build with the exact PivotTable, slicer, and chart setup — plus the KPI selection framework — in Excel Flow Edition #30.\nhttps://open.substack.com/pub/rileystream/p/chris-reilly-business-knowledge-not?r=7gk5to&utm_campaign=post&utm_medium=web\nAffiliate note: Maven Analytics is referenced. Link in the edition.",
       "first_comment_time_display": "8:01 AM",
       "carousel_spec": {
         "title": "How to Build an Excel Dashboard in Under an Hour (Step by Step)",
@@ -739,7 +739,7 @@
       "window": "Evening",
       "platform": "Substack",
       "type": "Quick Fix",
-      "content": "You are building a dashboard and your pivot table numbers do not match your raw data totals. This is one of the most stressful things that happens in Excel and it almost always has one of four causes.\n\nCheck these in order:\n\n1. Your pivot table data source range does not include all the rows. Right click the pivot → Change Data Source → make sure the range covers everything including new rows added since you built it.\n2. You have filters applied to your source data. Pivot tables include filtered-out rows in their totals. Clear all filters from the source before refreshing.\n3. There are duplicates in a column the pivot is summing by. It is summing correctly but you are comparing it to a number that was manually de-duplicated.\n4. The date field is grouping by month when you expect it to be grouping by individual date. Right click the date column in the pivot → Ungroup.\n\nWork through these four in five minutes and 90% of pivot discrepancies resolve themselves.\n\nDrop your worst \"the numbers do not match\" story below.\n→ Full dashboard build walkthrough in Excel Flow Edition #30: [Substack URL for Edition #30]",
+      "content": "You are building a dashboard and your pivot table numbers do not match your raw data totals. This is one of the most stressful things that happens in Excel and it almost always has one of four causes.\n\nCheck these in order:\n\n1. Your pivot table data source range does not include all the rows. Right click the pivot → Change Data Source → make sure the range covers everything including new rows added since you built it.\n2. You have filters applied to your source data. Pivot tables include filtered-out rows in their totals. Clear all filters from the source before refreshing.\n3. There are duplicates in a column the pivot is summing by. It is summing correctly but you are comparing it to a number that was manually de-duplicated.\n4. The date field is grouping by month when you expect it to be grouping by individual date. Right click the date column in the pivot → Ungroup.\n\nWork through these four in five minutes and 90% of pivot discrepancies resolve themselves.\n\nDrop your worst \"the numbers do not match\" story below.\n→ Full dashboard build walkthrough in Excel Flow Edition #30: https://open.substack.com/pub/rileystream/p/chris-reilly-business-knowledge-not?r=7gk5to&utm_campaign=post&utm_medium=web",
       "first_comment": null,
       "is_test_poll": false
     },
