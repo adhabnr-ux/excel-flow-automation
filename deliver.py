@@ -125,6 +125,8 @@ def main():
     if not BOT_TOKEN or not CHAT_ID:
         sys.exit("ERROR: TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not set in Secrets.")
 
+    log(f"Telegram: bot token set={bool(BOT_TOKEN)}  chat_id={CHAT_ID[:3]}...{CHAT_ID[-3:]} (len={len(CHAT_ID)})")
+
     posts = []
     for f in sorted(glob.glob("content/week-*.json")):
         posts += json.load(open(f, encoding="utf-8")).get("posts", [])
@@ -134,8 +136,11 @@ def main():
     log(f"{len(batch)} post(s) in batch: {[p['id'] for p in batch]}")
 
     if not batch:
-        send_telegram(f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} "
-                      f"window today ({today}).")
+        ok = send_telegram(f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} "
+                           f"window today ({today}).")
+        log(f"nothing-scheduled message: {'sent' if ok else 'FAILED — check TELEGRAM_CHAT_ID secret'}")
+        if not ok:
+            sys.exit(1)
         return
 
     flags = {p["id"]: qa(p) for p in batch}
