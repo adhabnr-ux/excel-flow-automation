@@ -49,10 +49,11 @@ def send_telegram(text):
             req = urllib.request.Request(
                 url, data=payload, headers={"Content-Type": "application/json"})
             with urllib.request.urlopen(req, timeout=40) as r:
-                if r.status == 200:
-                    return True
                 body = r.read().decode("utf-8", "ignore")
-                log(f"  send attempt {attempt}: HTTP {r.status} {body[:120]}")
+                result = json.loads(body)
+                if result.get("ok"):
+                    return True
+                log(f"  send attempt {attempt}: Telegram error — {result.get('description', body[:120])}")
         except Exception as e:
             log(f"  send attempt {attempt} failed: {e}")
         time.sleep(5)
