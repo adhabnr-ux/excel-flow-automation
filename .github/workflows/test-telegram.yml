@@ -1,0 +1,42 @@
+name: Test Telegram
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send test message
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, urllib.request, datetime
+
+          BOT_TOKEN = os.environ.get("BOT_TOKEN", "").strip()
+          CHAT_ID   = os.environ.get("CHAT_ID",   "").strip()
+
+          print(f"BOT_TOKEN set: {bool(BOT_TOKEN)}")
+          print(f"CHAT_ID   set: {bool(CHAT_ID)}  value: {CHAT_ID[:3]}...{CHAT_ID[-3:] if len(CHAT_ID)>=3 else '?'} (len={len(CHAT_ID)})")
+
+          if not BOT_TOKEN or not CHAT_ID:
+              raise SystemExit("ERROR: secrets missing — add TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in repo Settings → Secrets")
+
+          now = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+          text = f"📅 EXCEL FLOW\n✅ Telegram test passed at {now}\nIf you see this, delivery is working!"
+
+          url     = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+          payload = json.dumps({"chat_id": CHAT_ID, "text": text}).encode()
+          req     = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
+
+          with urllib.request.urlopen(req, timeout=30) as r:
+              body   = r.read().decode()
+              result = json.loads(body)
+
+          print(f"Telegram response ok: {result.get('ok')}")
+          if not result.get("ok"):
+              raise SystemExit(f"FAILED — {result.get('description', body[:200])}")
+          print("SUCCESS — message sent")
+          EOF
