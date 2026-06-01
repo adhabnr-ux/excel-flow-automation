@@ -1,24 +1,37 @@
 name: Excel Flow Delivery
 
-# Three scheduled runs per day (cron is UTC; America/Phoenix is UTC-7, no DST).
-# 06:30 MST = 13:30 UTC  |  11:00 MST = 18:00 UTC  |  16:00 MST = 23:00 UTC
+# Three delivery windows per day, each attempted 3× (30 min apart) so a
+# delayed or skipped GitHub cron still fires within the window.
+# A sentinel file (delivered/YYYY-MM-DD-Window.txt) prevents double-sending.
 #
-# repository_dispatch is a reliable backup: cron-job.org can POST to the GitHub
-# API with event_type morning/midday/evening if the scheduler ever stalls.
+# Cron is UTC — America/Phoenix is UTC-7 (no DST).
+#   Morning : 06:30 MST = 13:30 UTC  (+ 14:00, 14:30 UTC backups)
+#   Midday  : 11:00 MST = 18:00 UTC  (+ 18:30, 19:00 UTC backups)
+#   Evening : 16:00 MST = 23:00 UTC  (+ 23:30, 00:00 UTC backups)
+
 on:
   repository_dispatch:
     types: [morning, midday, evening]
   schedule:
-    - cron: '30 13 * * *'   # Morning  — 06:30 America/Phoenix
-    - cron: '0 18 * * *'    # Midday   — 11:00 America/Phoenix
-    - cron: '0 23 * * *'    # Evening  — 16:00 America/Phoenix
+    - cron: '30 13 * * *'   # Morning   06:30 MST
+    - cron: '0 14 * * *'    # Morning   07:00 MST (backup 1)
+    - cron: '30 14 * * *'   # Morning   07:30 MST (backup 2)
+    - cron: '0 18 * * *'    # Midday    11:00 MST
+    - cron: '30 18 * * *'   # Midday    11:30 MST (backup 1)
+    - cron: '0 19 * * *'    # Midday    12:00 MST (backup 2)
+    - cron: '0 23 * * *'    # Evening   16:00 MST
+    - cron: '30 23 * * *'   # Evening   16:30 MST (backup 1)
+    - cron: '0 0 * * *'     # Evening   17:00 MST (backup 2)
   workflow_dispatch:
     inputs:
       window:
-        description: 'Window to deliver (manual test run)'
+        description: 'Window to deliver (manual override)'
         required: true
         type: choice
         options: [Morning, Midday, Evening]
+
+permissions:
+  contents: write   # needed to commit sentinel files
 
 jobs:
   deliver:
@@ -43,14 +56,43 @@ jobs:
             esac
           else
             case "${{ github.event.schedule }}" in
-              "30 13 * * *") echo "window=Morning" >> "$GITHUB_OUTPUT" ;;
-              "0 18 * * *")  echo "window=Midday"  >> "$GITHUB_OUTPUT" ;;
-              "0 23 * * *")  echo "window=Evening" >> "$GITHUB_OUTPUT" ;;
+              "30 13 * * *"|"0 14 * * *"|"30 14 * * *") echo "window=Morning" >> "$GITHUB_OUTPUT" ;;
+              "0 18 * * *"|"30 18 * * *"|"0 19 * * *")  echo "window=Midday"  >> "$GITHUB_OUTPUT" ;;
+              "0 23 * * *"|"30 23 * * *"|"0 0 * * *")   echo "window=Evening" >> "$GITHUB_OUTPUT" ;;
             esac
           fi
 
+      - name: Check sentinel
+        id: sentinel
+        run: |
+          TODAY=$(python3 -c "import datetime; tz=datetime.timezone(datetime.timedelta(hours=-7)); print(datetime.datetime.now(tz).strftime('%Y-%m-%d'))")
+          SENTINEL="delivered/${TODAY}-${{ steps.win.outputs.window }}.txt"
+          echo "sentinel=$SENTINEL" >> "$GITHUB_OUTPUT"
+          echo "today=$TODAY" >> "$GITHUB_OUTPUT"
+          if [ -f "$SENTINEL" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Already delivered ${{ steps.win.outputs.window }} on ${TODAY} — skipping."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "No sentinel — proceeding with delivery."
+          fi
+
       - name: Deliver
+        if: steps.sentinel.outputs.skip == 'false'
+        id: deliver
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python3 deliver.py "${{ steps.win.outputs.window }}"
+
+      - name: Mark delivered
+        if: steps.sentinel.outputs.skip == 'false' && steps.deliver.outcome == 'success'
+        run: |
+          mkdir -p delivered
+          echo "Delivered at $(date -u)" > "${{ steps.sentinel.outputs.sentinel }}"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git pull --rebase origin main
+          git add "${{ steps.sentinel.outputs.sentinel }}"
+          git commit -m "mark ${{ steps.win.outputs.window }} delivered ${{ steps.sentinel.outputs.today }}"
+          git push origin main
