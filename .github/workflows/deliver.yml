@@ -77,7 +77,15 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 deliver.py "${{ steps.win.outputs.window }}"
+        run: |
+          echo ">>> python3 $(python3 --version)"
+          echo ">>> working dir: $(pwd)"
+          echo ">>> content files: $(ls content/week-*.json 2>/dev/null | tr '\n' ' ')"
+          echo ">>> window arg: ${{ steps.win.outputs.window }}"
+          echo ">>> BOT_TOKEN set: $([ -n "$TELEGRAM_BOT_TOKEN" ] && echo YES || echo NO)"
+          echo ">>> CHAT_ID set:   $([ -n "$TELEGRAM_CHAT_ID" ] && echo YES || echo NO)"
+          python3 deliver.py "${{ steps.win.outputs.window }}"
+          echo ">>> deliver.py exit code: $?"
 
       - name: Mark delivered
         if: steps.sentinel.outputs.skip == 'false' && steps.deliver.outcome == 'success'
