@@ -1,50 +1,85 @@
-# Excel Flow — Posting Automation
+# Excel Flow Automation
 
-Delivers Excel Flow's daily LinkedIn + Substack posts to WhatsApp, ready to
-paste, at the right time. Runs entirely on **GitHub Actions** — no computer
-required.
+Automated content delivery for the Excel Flow newsletter. Posts go from JSON content files to Telegram at scheduled times — LinkedIn and Substack posts delivered daily across three windows.
 
-## Why it works this way
+LinkedIn's API cannot create polls and Substack has no posting API, so true auto-posting is impossible. This is a **prep-and-deliver** system: it sends the exact post text to Telegram at the right time; you do the final publish tap (~20–30s per post).
 
-LinkedIn's API cannot create polls and Substack has no posting API, so true
-auto-posting is impossible. This is a **prep-and-deliver** system: it assembles
-every post perfectly and texts it to you; you do the final publish tap
-(~20–30s per post).
+## Delivery Windows (America/Phoenix, no DST)
 
-## How it runs
+| Window  | MST Time | UTC Cron  |
+|---------|----------|-----------|
+| Morning | 6:30 AM  | 13:30 UTC |
+| Midday  | 11:00 AM | 18:00 UTC |
+| Evening | 4:00 PM  | 23:00 UTC |
 
-GitHub Actions runs `deliver.py` three times a day (cron is in UTC;
-America/Phoenix is UTC-7 with no daylight saving):
+## Weekly Workflow
 
-| Window  | Cron (UTC)      | Local (MST) |
-|---------|-----------------|-------------|
-| Morning | `30 13 * * *`   | 06:30       |
-| Midday  | `0 18 * * *`    | 11:00       |
-| Evening | `0 23 * * *`    | 16:00       |
+### Step 1 — Scaffold next week's file
+```bash
+python3 scripts/new_week.py 2026-06-22
+```
+Creates `content/week-2026-06-22.json` with all 44 post slots pre-populated (correct dates, windows, IDs). Fill in the `content` and `first_comment` fields.
 
-Each run reads `content/week-*.json`, takes today's posts for that window,
-QA-checks them, and sends each as its own WhatsApp message via CallMeBot.
-Carousel posts deliver a link to a pre-rendered PDF in `carousels/`.
+### Step 2 — Validate before pushing
+```bash
+python3 validate.py
+```
+Catches schema errors, wrong window/platform values, duplicate IDs, unresolved placeholders. Exit code 0 = clean.
+
+### Step 3 — Preview what will be sent (optional)
+```bash
+python3 deliver.py Morning --dry-run
+```
+Prints every Telegram message that would be sent — no API calls made. Good for checking before a window fires.
+
+### Step 4 — Commit and push
+```bash
+git add content/week-2026-06-22.json && git commit -m "Add week of June 22" && git push
+```
+
+## Adding a New Edition URL
+
+When a new edition publishes:
+```bash
+python3 scripts/add_edition.py 32 https://rileystream.substack.com/p/your-slug
+git add editions.json && git commit -m "add edition #32 URL" && git push
+```
+
+This auto-resolves any `[link]` or `[Edition #32 link]` placeholders at delivery time.
+
+## Manual Re-delivery
+
+If a window was missed (cron failed, or you need to re-deliver):
+1. GitHub → Actions → **Excel Flow Delivery** → **Run workflow**
+2. Select the window (Morning / Midday / Evening)
+3. Run workflow
+
+If sentinels are blocking: delete `delivered/YYYY-MM-DD-Window.txt`, commit, push, then trigger manually.
 
 ## Files
 
-- `deliver.py` — the delivery script (Python standard library only)
-- `.github/workflows/deliver.yml` — the 3 cron schedules + manual trigger
-- `content/week-*.json` — the posts, one file per week
-- `carousels/*.pdf` — pre-rendered carousel PDFs
-- `carousel-renderer.py` — regenerates carousel PDFs from a spec (local tool)
-- `SETUP.md` — one-time setup
-- `DESIGN.md` — full design spec
+| File | Purpose |
+|------|---------|
+| `deliver.py` | Core delivery script — run by GitHub Actions |
+| `validate.py` | Schema validator for content files |
+| `editions.json` | Edition number → Substack URL registry |
+| `metrics_reminder.py` | Sunday 9 PM Telegram metrics checklist |
+| `scripts/new_week.py` | Scaffolds a new week content file |
+| `scripts/add_edition.py` | Registers a new edition URL |
+| `content/week-*.json` | Weekly post content (one file per week) |
+| `delivered/` | Sentinel files — one per delivered window |
 
-## Weekly
+## Workflows
 
-Hand next week's content to Claude in chat. Claude rewrites `content/`,
-re-renders `carousels/`, commits, and pushes. The workflow and script never
-change.
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| `deliver.yml` | Schedule (3x/day) + manual + cron-job.org | Deliver posts |
+| `validate.yml` | Push/PR to content files | Validate schema |
+| `metrics-reminder.yml` | Sunday 9 PM MST | Weekly metrics checklist |
 
-## Secrets
+## Required Secrets
 
-Set in the repo: Settings → Secrets and variables → Actions.
+GitHub → Settings → Secrets and variables → Actions:
 
-- `CALLMEBOT_PHONE` — your CallMeBot phone number
-- `CALLMEBOT_APIKEY` — your CallMeBot API key
+- `TELEGRAM_BOT_TOKEN` — bot token from @BotFather
+- `TELEGRAM_CHAT_ID` — your personal Telegram chat ID (numeric)

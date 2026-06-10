@@ -159,7 +159,9 @@ def main():
     log(f"Telegram: bot token set={bool(BOT_TOKEN)}  chat_id={CHAT_ID[:3] if len(CHAT_ID)>=3 else '?'}...{CHAT_ID[-3:] if len(CHAT_ID)>=3 else '?'} (len={len(CHAT_ID)})")
 
     editions = load_editions()
-    log(f"Edition registry: {len(editions)} entries, {sum(1 for v in editions.values() if v)} with URLs")
+    missing_urls = [k for k, v in sorted(editions.items(), key=lambda x: int(x[0]) if x[0].isdigit() else 0) if not v]
+    log(f"Edition registry: {len(editions)} entries, {sum(1 for v in editions.values() if v)} with URLs"
+        + (f" | missing URLs for editions: {', '.join('#'+e for e in missing_urls)}" if missing_urls else ""))
 
     posts = []
     for f in sorted(glob.glob("content/week-*.json")):
