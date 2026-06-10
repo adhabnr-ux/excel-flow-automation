@@ -152,7 +152,7 @@
     },
     {
       "id": "wed-li-0730",
-      "date": "2026-06-11",
+      "date": "2026-06-10",
       "day": "Wednesday",
       "post_time": "07:30",
       "post_time_display": "7:30 AM",
@@ -166,7 +166,7 @@
     },
     {
       "id": "wed-li-1200",
-      "date": "2026-06-11",
+      "date": "2026-06-10",
       "day": "Wednesday",
       "post_time": "12:00",
       "post_time_display": "12:00 PM",
@@ -177,7 +177,7 @@
     },
     {
       "id": "wed-li-1730",
-      "date": "2026-06-11",
+      "date": "2026-06-10",
       "day": "Wednesday",
       "post_time": "17:30",
       "post_time_display": "5:30 PM",
@@ -188,7 +188,7 @@
     },
     {
       "id": "wed-ss-0800",
-      "date": "2026-06-11",
+      "date": "2026-06-10",
       "day": "Wednesday",
       "post_time": "08:00",
       "post_time_display": "8:00 AM",
@@ -199,7 +199,7 @@
     },
     {
       "id": "wed-ss-1200",
-      "date": "2026-06-11",
+      "date": "2026-06-10",
       "day": "Wednesday",
       "post_time": "12:00",
       "post_time_display": "12:00 PM",
@@ -210,7 +210,7 @@
     },
     {
       "id": "wed-ss-2000",
-      "date": "2026-06-11",
+      "date": "2026-06-10",
       "day": "Wednesday",
       "post_time": "20:00",
       "post_time_display": "8:00 PM",
@@ -221,7 +221,7 @@
     },
     {
       "id": "thu-li-0730",
-      "date": "2026-06-12",
+      "date": "2026-06-11",
       "day": "Thursday",
       "post_time": "07:30",
       "post_time_display": "7:30 AM",
@@ -235,7 +235,7 @@
     },
     {
       "id": "thu-li-0900",
-      "date": "2026-06-12",
+      "date": "2026-06-11",
       "day": "Thursday",
       "post_time": "09:00",
       "post_time_display": "9:00 AM",
@@ -246,7 +246,7 @@
     },
     {
       "id": "thu-li-1200",
-      "date": "2026-06-12",
+      "date": "2026-06-11",
       "day": "Thursday",
       "post_time": "12:00",
       "post_time_display": "12:00 PM",
@@ -257,7 +257,7 @@
     },
     {
       "id": "thu-li-1730",
-      "date": "2026-06-12",
+      "date": "2026-06-11",
       "day": "Thursday",
       "post_time": "17:30",
       "post_time_display": "5:30 PM",
@@ -268,7 +268,7 @@
     },
     {
       "id": "thu-ss-1800",
-      "date": "2026-06-12",
+      "date": "2026-06-11",
       "day": "Thursday",
       "post_time": "18:00",
       "post_time_display": "6:00 PM",
@@ -279,7 +279,7 @@
     },
     {
       "id": "thu-ss-1830",
-      "date": "2026-06-12",
+      "date": "2026-06-11",
       "day": "Thursday",
       "post_time": "18:30",
       "post_time_display": "6:30 PM",
@@ -290,7 +290,7 @@
     },
     {
       "id": "thu-ss-1900",
-      "date": "2026-06-12",
+      "date": "2026-06-11",
       "day": "Thursday",
       "post_time": "19:00",
       "post_time_display": "7:00 PM",
@@ -301,7 +301,7 @@
     },
     {
       "id": "fri-li-0730",
-      "date": "2026-06-13",
+      "date": "2026-06-12",
       "day": "Friday",
       "post_time": "07:30",
       "post_time_display": "7:30 AM",
@@ -315,7 +315,7 @@
     },
     {
       "id": "fri-li-1200",
-      "date": "2026-06-13",
+      "date": "2026-06-12",
       "day": "Friday",
       "post_time": "12:00",
       "post_time_display": "12:00 PM",
@@ -326,7 +326,7 @@
     },
     {
       "id": "fri-li-1730",
-      "date": "2026-06-13",
+      "date": "2026-06-12",
       "day": "Friday",
       "post_time": "17:30",
       "post_time_display": "5:30 PM",
@@ -337,7 +337,7 @@
     },
     {
       "id": "fri-ss-1900",
-      "date": "2026-06-13",
+      "date": "2026-06-12",
       "day": "Friday",
       "post_time": "19:00",
       "post_time_display": "7:00 PM",
@@ -348,7 +348,7 @@
     },
     {
       "id": "fri-ss-1930",
-      "date": "2026-06-13",
+      "date": "2026-06-12",
       "day": "Friday",
       "post_time": "19:30",
       "post_time_display": "7:30 PM",
@@ -359,7 +359,7 @@
     },
     {
       "id": "fri-ss-2000",
-      "date": "2026-06-13",
+      "date": "2026-06-12",
       "day": "Friday",
       "post_time": "20:00",
       "post_time_display": "8:00 PM",
@@ -370,7 +370,7 @@
     },
     {
       "id": "sat-li-0900",
-      "date": "2026-06-14",
+      "date": "2026-06-13",
       "day": "Saturday",
       "post_time": "09:00",
       "post_time_display": "9:00 AM",
@@ -381,7 +381,7 @@
     },
     {
       "id": "sat-li-1100",
-      "date": "2026-06-14",
+      "date": "2026-06-13",
       "day": "Saturday",
       "post_time": "11:00",
       "post_time_display": "11:00 AM",
@@ -392,7 +392,7 @@
     },
     {
       "id": "sat-li-1300",
-      "date": "2026-06-14",
+      "date": "2026-06-13",
       "day": "Saturday",
       "post_time": "13:00",
       "post_time_display": "1:00 PM",
@@ -403,7 +403,7 @@
     },
     {
       "id": "sat-ss-1630",
-      "date": "2026-06-14",
+      "date": "2026-06-13",
       "day": "Saturday",
       "post_time": "16:30",
       "post_time_display": "4:30 PM",
@@ -414,7 +414,7 @@
     },
     {
       "id": "sat-ss-1700",
-      "date": "2026-06-14",
+      "date": "2026-06-13",
       "day": "Saturday",
       "post_time": "17:00",
       "post_time_display": "5:00 PM",
@@ -425,7 +425,7 @@
     },
     {
       "id": "sat-ss-1730",
-      "date": "2026-06-14",
+      "date": "2026-06-13",
       "day": "Saturday",
       "post_time": "17:30",
       "post_time_display": "5:30 PM",
@@ -436,7 +436,7 @@
     },
     {
       "id": "sun-li-1000",
-      "date": "2026-06-15",
+      "date": "2026-06-14",
       "day": "Sunday",
       "post_time": "10:00",
       "post_time_display": "10:00 AM",
@@ -447,7 +447,7 @@
     },
     {
       "id": "sun-li-1200",
-      "date": "2026-06-15",
+      "date": "2026-06-14",
       "day": "Sunday",
       "post_time": "12:00",
       "post_time_display": "12:00 PM",
@@ -458,7 +458,7 @@
     },
     {
       "id": "sun-li-1800",
-      "date": "2026-06-15",
+      "date": "2026-06-14",
       "day": "Sunday",
       "post_time": "18:00",
       "post_time_display": "6:00 PM",
@@ -469,7 +469,7 @@
     },
     {
       "id": "sun-ss-1930",
-      "date": "2026-06-15",
+      "date": "2026-06-14",
       "day": "Sunday",
       "post_time": "19:30",
       "post_time_display": "7:30 PM",
@@ -480,7 +480,7 @@
     },
     {
       "id": "sun-ss-2000",
-      "date": "2026-06-15",
+      "date": "2026-06-14",
       "day": "Sunday",
       "post_time": "20:00",
       "post_time_display": "8:00 PM",
@@ -491,7 +491,7 @@
     },
     {
       "id": "sun-ss-2030",
-      "date": "2026-06-15",
+      "date": "2026-06-14",
       "day": "Sunday",
       "post_time": "20:30",
       "post_time_display": "8:30 PM",
