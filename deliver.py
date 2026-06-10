@@ -34,6 +34,33 @@ GAP = 2  # seconds between Telegram messages (no rate issues, small gap for orde
 
 RE_PLACEHOLDER = re.compile(r"(?<!\w)\[[^\]\n]+\]")
 RE_OPTION = re.compile(r"^[A-Z]\)\s*(.+)$")
+RE_EDITION_BLOCK = re.compile(r"(Edition #(\d+)[^\n]*)\n\[link\]")
+RE_EDITION_INLINE = re.compile(r"\[Edition #(\d+) link\]")
+
+
+def load_editions():
+    """Load editions.json from the repo root. Returns dict of {str: url_or_None}."""
+    try:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "editions.json")
+        with open(path, encoding="utf-8") as f:
+            return json.load(f).get("editions", {})
+    except Exception:
+        return {}
+
+
+def resolve_edition_links(text, editions):
+    """Replace [link] / [Edition #N link] with known URLs. Unknown editions stay as-is."""
+    def sub_block(m):
+        url = editions.get(m.group(2))
+        return f"{m.group(1)}\n{url}" if url else m.group(0)
+
+    def sub_inline(m):
+        url = editions.get(m.group(1))
+        return url if url else m.group(0)
+
+    text = RE_EDITION_BLOCK.sub(sub_block, text)
+    text = RE_EDITION_INLINE.sub(sub_inline, text)
+    return text
 
 
 def log(*a):
@@ -116,16 +143,23 @@ def messages_for(post, flags):
 
 
 def main():
-    if len(sys.argv) != 2 or sys.argv[1] not in ("Morning", "Midday", "Evening"):
-        sys.exit("Usage: python3 deliver.py <Morning|Midday|Evening>")
-    window = sys.argv[1]
+    positional = [a for a in sys.argv[1:] if not a.startswith("--")]
+    dry_run = "--dry-run" in sys.argv
+    if len(positional) != 1 or positional[0] not in ("Morning", "Midday", "Evening"):
+        sys.exit("Usage: python3 deliver.py <Morning|Midday|Evening> [--dry-run]")
+    window = positional[0]
     today = datetime.datetime.now(MST).strftime("%Y-%m-%d")
     log(f"Excel Flow delivery — window={window} date={today} (America/Phoenix)")
+    if dry_run:
+        log("*** DRY-RUN MODE — no messages will be sent ***")
 
-    if not BOT_TOKEN or not CHAT_ID:
+    if not dry_run and (not BOT_TOKEN or not CHAT_ID):
         sys.exit("ERROR: TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not set in Secrets.")
 
-    log(f"Telegram: bot token set={bool(BOT_TOKEN)}  chat_id={CHAT_ID[:3]}...{CHAT_ID[-3:]} (len={len(CHAT_ID)})")
+    log(f"Telegram: bot token set={bool(BOT_TOKEN)}  chat_id={CHAT_ID[:3] if len(CHAT_ID)>=3 else '?'}...{CHAT_ID[-3:] if len(CHAT_ID)>=3 else '?'} (len={len(CHAT_ID)})")
+
+    editions = load_editions()
+    log(f"Edition registry: {len(editions)} entries, {sum(1 for v in editions.values() if v)} with URLs")
 
     posts = []
     for f in sorted(glob.glob("content/week-*.json")):
@@ -136,12 +170,20 @@ def main():
     log(f"{len(batch)} post(s) in batch: {[p['id'] for p in batch]}")
 
     if not batch:
-        ok = send_telegram(f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} "
-                           f"window today ({today}).")
+        msg = f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} window today ({today})."
+        if dry_run:
+            log(f"[DRY-RUN] Would send: {msg}")
+            return
+        ok = send_telegram(msg)
         log(f"nothing-scheduled message: {'sent' if ok else 'FAILED — check TELEGRAM_CHAT_ID secret'}")
         if not ok:
             sys.exit(1)
         return
+
+    for p in batch:
+        p["content"] = resolve_edition_links(p.get("content") or "", editions)
+        if p.get("first_comment"):
+            p["first_comment"] = resolve_edition_links(p["first_comment"], editions)
 
     flags = {p["id"]: qa(p) for p in batch}
 
@@ -155,10 +197,15 @@ def main():
 
     sent = 0
     for i, m in enumerate(queue):
-        ok = send_telegram(m)
+        if dry_run:
+            log(f"\n[DRY-RUN] message {i + 1}/{len(queue)} ({len(m)} chars):\n{m}\n{'─'*60}")
+            ok = True
+        else:
+            ok = send_telegram(m)
         sent += ok
-        log(f"message {i + 1}/{len(queue)}: {'sent' if ok else 'FAILED'}")
-        if i < len(queue) - 1:
+        if not dry_run:
+            log(f"message {i + 1}/{len(queue)}: {'sent' if ok else 'FAILED'}")
+        if not dry_run and i < len(queue) - 1:
             time.sleep(GAP)
 
     log("\n===== FULL BATCH REPORT (fallback) =====")
@@ -172,9 +219,9 @@ def main():
             log(f"  [first comment]\n{p['first_comment']}")
         if p.get("carousel_pdf"):
             log(f"  [carousel] {carousel_url(p)}")
-    log(f"\n{sent}/{len(queue)} messages delivered.")
+    log(f"\n{sent}/{len(queue)} messages {'previewed' if dry_run else 'delivered'}.")
 
-    if sent < len(queue):
+    if not dry_run and sent < len(queue):
         sys.exit(1)
 
 

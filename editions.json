@@ -1,0 +1,15 @@
+{
+  "editions": {
+    "22": null,
+    "23": null,
+    "24": null,
+    "25": "https://rileystream.substack.com/p/mynda-treacy-the-1-excel-mistake",
+    "26": "https://rileystream.substack.com/p/carl-seidman-why-excel-skills-dont",
+    "27": "https://substack.com/@rileystream/p-197635354",
+    "28": "https://rileystream.substack.com/p/the-four-languages-of-modern-excel",
+    "29": null,
+    "30": null,
+    "31": null
+  },
+  "_note": "Add new edition URLs here as they are published. Keys are edition numbers as strings. null = URL not yet known (will remain as placeholder and trigger QA warning)."
+}
