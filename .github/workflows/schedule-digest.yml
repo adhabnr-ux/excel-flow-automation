@@ -1,0 +1,30 @@
+name: Weekly Scheduling Digest
+
+# Sunday 10:00 AM MST (no DST) = Sunday 17:00 UTC.
+# Sends a Telegram digest of the upcoming week's natively-schedulable posts
+# so you can batch-load them into LinkedIn's own scheduler in one sitting.
+on:
+  schedule:
+    - cron: '0 17 * * 0'
+  workflow_dispatch:
+    inputs:
+      week_file:
+        description: 'Optional content file path (default: upcoming Monday)'
+        required: false
+        type: string
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Send scheduling digest
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 schedule_digest.py ${{ inputs.week_file }}

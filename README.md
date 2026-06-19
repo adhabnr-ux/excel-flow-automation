@@ -47,6 +47,32 @@ git add editions.json && git commit -m "add edition #32 URL" && git push
 
 This auto-resolves any `[link]` or `[Edition #32 link]` placeholders at delivery time.
 
+## Native Scheduling (reduce live taps, safely)
+
+LinkedIn's own scheduler can publish **text posts** (your Creator Shoutouts)
+server-side at a set time — computer off, fully within LinkedIn's terms. Polls
+**cannot** be natively scheduled, so they still come as a live Telegram tap.
+
+**Every Sunday at 10 AM MST**, `schedule-digest.yml` sends a Telegram digest of
+the coming week's schedulable posts with exact times + copy-ready text. Sit down
+once, paste each into LinkedIn's scheduler (New post → 🕒 clock → set time →
+Schedule), and that whole category publishes itself all week.
+
+Preview the digest anytime:
+```bash
+python3 schedule_digest.py content/week-2026-06-15.json --dry-run
+```
+
+**Mark any post schedulable:** add `"schedulable": true` to a post in the JSON
+(or `false` to force live-tap). By default only LinkedIn Creator Shoutouts are
+schedulable. If you ever run a LinkedIn "poll" as a plain text post to chase
+comments, mark it `true` and it joins the Sunday digest.
+
+**Stop double-pinging:** once you trust the Sunday routine, set the workflow
+env var `SKIP_SCHEDULABLE: "true"` in `deliver.yml`. Then natively-scheduled
+posts are omitted from the live tap — only polls ping you. (Default is off, so
+nothing is ever silently dropped until you opt in.)
+
 ## Manual Re-delivery
 
 If a window was missed (cron failed, or you need to re-deliver):
@@ -64,6 +90,8 @@ If sentinels are blocking: delete `delivered/YYYY-MM-DD-Window.txt`, commit, pus
 | `validate.py` | Schema validator for content files |
 | `editions.json` | Edition number → Substack URL registry |
 | `metrics_reminder.py` | Sunday 9 PM Telegram metrics checklist |
+| `schedule_digest.py` | Sunday digest of natively-schedulable posts |
+| `schedule_helper.py` | Shared `is_schedulable()` logic |
 | `scripts/new_week.py` | Scaffolds a new week content file |
 | `scripts/add_edition.py` | Registers a new edition URL |
 | `content/week-*.json` | Weekly post content (one file per week) |
@@ -76,6 +104,7 @@ If sentinels are blocking: delete `delivered/YYYY-MM-DD-Window.txt`, commit, pus
 | `deliver.yml` | Schedule (3x/day) + manual + cron-job.org | Deliver posts |
 | `validate.yml` | Push/PR to content files | Validate schema |
 | `metrics-reminder.yml` | Sunday 9 PM MST | Weekly metrics checklist |
+| `schedule-digest.yml` | Sunday 10 AM MST | Batch-scheduling digest |
 
 ## Required Secrets
 

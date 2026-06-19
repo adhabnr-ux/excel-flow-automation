@@ -24,10 +24,17 @@ import sys
 import time
 import urllib.request
 
+from schedule_helper import is_schedulable
+
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 REPO = os.environ.get("GITHUB_REPOSITORY", "").strip()
 REF = os.environ.get("GITHUB_REF_NAME", "main").strip() or "main"
+
+# When true, posts that you batch-schedule natively (Sunday digest) are NOT
+# pinged in real time — only live-tap posts (polls) come through. Default false
+# so nothing is ever silently dropped until you trust the Sunday routine.
+SKIP_SCHEDULABLE = os.environ.get("SKIP_SCHEDULABLE", "").strip().lower() in ("1", "true", "yes")
 
 MST = datetime.timezone(datetime.timedelta(hours=-7))  # America/Phoenix, no DST
 GAP = 2  # seconds between Telegram messages (no rate issues, small gap for ordering)
@@ -171,8 +178,21 @@ def main():
         key=lambda p: p["post_time"])
     log(f"{len(batch)} post(s) in batch: {[p['id'] for p in batch]}")
 
+    # If opted in, drop posts that are batch-scheduled natively (LinkedIn text
+    # posts loaded into the native scheduler on Sunday) so they don't double-ping.
+    pre_scheduled = [p for p in batch if is_schedulable(p)]
+    if SKIP_SCHEDULABLE and pre_scheduled:
+        log(f"SKIP_SCHEDULABLE on — {len(pre_scheduled)} natively-scheduled post(s) "
+            f"omitted from live tap: {[p['id'] for p in pre_scheduled]}")
+        batch = [p for p in batch if not is_schedulable(p)]
+
     if not batch:
-        msg = f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} window today ({today})."
+        if SKIP_SCHEDULABLE and pre_scheduled:
+            msg = (f"📅 EXCEL FLOW\nAll {len(pre_scheduled)} post(s) for the "
+                   f"{window.lower()} window today ({today}) are pre-scheduled "
+                   f"natively — nothing to tap. ✅")
+        else:
+            msg = f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} window today ({today})."
         if dry_run:
             log(f"[DRY-RUN] Would send: {msg}")
             return
@@ -191,7 +211,10 @@ def main():
 
     queue = []
     for p in batch:
-        queue += messages_for(p, flags[p["id"]])
+        msgs = messages_for(p, flags[p["id"]])
+        if is_schedulable(p) and not SKIP_SCHEDULABLE and msgs:
+            msgs[0] = "📆 (schedulable — you can batch this in LinkedIn's scheduler)\n" + msgs[0]
+        queue += msgs
     if len(batch) > 5:
         queue.append(f"📅 EXCEL FLOW\n⚠️ unusually large batch ({len(batch)} "
                      f"posts) — check the content file.")
