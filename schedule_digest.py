@@ -94,6 +94,14 @@ def main():
             fc_when = p.get("first_comment_time_display") or "right after"
             messages.append(f"💬 FIRST COMMENT for the above (post at {fc_when}) 👇")
             messages.append(fc)
+        # Manual group follow-up reminder. Set "group_followup": false on a post
+        # to suppress, or a custom string to override. Shoutouts default to a
+        # reminder since they go to the feed first, then into a group after.
+        followup = p.get("group_followup")
+        if followup is None and p.get("type") in ("Creator Shoutout", "Shoutout"):
+            followup = "After it's live on your feed, do your in-group follow-up (groups can't be scheduled)."
+        if followup:
+            messages.append(f"📌 REMINDER: {followup}")
 
     import time
     sent = 0

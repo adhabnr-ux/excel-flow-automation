@@ -49,14 +49,22 @@ This auto-resolves any `[link]` or `[Edition #32 link]` placeholders at delivery
 
 ## Native Scheduling (reduce live taps, safely)
 
-LinkedIn's own scheduler can publish **text posts** (your Creator Shoutouts)
-server-side at a set time — computer off, fully within LinkedIn's terms. Polls
-**cannot** be natively scheduled, so they still come as a live Telegram tap.
+What can and can't be scheduled, by platform (verified June 2026):
+
+| Content | Native scheduling? | How it's handled here |
+|---------|--------------------|-----------------------|
+| LinkedIn Creator Shoutouts (personal feed) | ✅ Yes | Sunday digest → batch into LinkedIn's scheduler |
+| LinkedIn polls | ❌ No (scheduler excludes polls) | Live Telegram tap |
+| LinkedIn posts **inside Groups** | ❌ No (no native scheduling, no API — manual only) | Live Telegram tap |
+| Substack Notes | ⚠️ Native scheduling exists but caps at ~5 queued | Live Telegram tap (by choice — cap too low for 21/week) |
+
+Shoutouts go to the personal feed first, then get a manual in-group follow-up —
+the digest reminds you of that second step (groups can't be automated at all).
 
 **Every Sunday at 10 AM MST**, `schedule-digest.yml` sends a Telegram digest of
 the coming week's schedulable posts with exact times + copy-ready text. Sit down
 once, paste each into LinkedIn's scheduler (New post → 🕒 clock → set time →
-Schedule), and that whole category publishes itself all week.
+Schedule), and that category publishes itself all week.
 
 Preview the digest anytime:
 ```bash
@@ -67,6 +75,10 @@ python3 schedule_digest.py content/week-2026-06-15.json --dry-run
 (or `false` to force live-tap). By default only LinkedIn Creator Shoutouts are
 schedulable. If you ever run a LinkedIn "poll" as a plain text post to chase
 comments, mark it `true` and it joins the Sunday digest.
+
+**Group follow-up reminder:** shoutouts get a digest reminder to do their manual
+in-group follow-up. Override with `"group_followup": "your custom note"` on a
+post, or `"group_followup": false` to suppress it.
 
 **Stop double-pinging:** once you trust the Sunday routine, set the workflow
 env var `SKIP_SCHEDULABLE: "true"` in `deliver.yml`. Then natively-scheduled
