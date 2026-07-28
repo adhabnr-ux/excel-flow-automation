@@ -24,50 +24,16 @@ import sys
 import time
 import urllib.request
 
-from schedule_helper import is_schedulable
-
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 REPO = os.environ.get("GITHUB_REPOSITORY", "").strip()
 REF = os.environ.get("GITHUB_REF_NAME", "main").strip() or "main"
-
-# When true, posts that you batch-schedule natively (Sunday digest) are NOT
-# pinged in real time — only live-tap posts (polls) come through. Default false
-# so nothing is ever silently dropped until you trust the Sunday routine.
-SKIP_SCHEDULABLE = os.environ.get("SKIP_SCHEDULABLE", "").strip().lower() in ("1", "true", "yes")
 
 MST = datetime.timezone(datetime.timedelta(hours=-7))  # America/Phoenix, no DST
 GAP = 2  # seconds between Telegram messages (no rate issues, small gap for ordering)
 
 RE_PLACEHOLDER = re.compile(r"(?<!\w)\[[^\]\n]+\]")
 RE_OPTION = re.compile(r"^[A-Z]\)\s*(.+)$")
-RE_EDITION_BLOCK = re.compile(r"(Edition #(\d+)[^\n]*)\n\[link\]")
-RE_EDITION_INLINE = re.compile(r"\[Edition #(\d+) link\]")
-
-
-def load_editions():
-    """Load editions.json from the repo root. Returns dict of {str: url_or_None}."""
-    try:
-        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "editions.json")
-        with open(path, encoding="utf-8") as f:
-            return json.load(f).get("editions", {})
-    except Exception:
-        return {}
-
-
-def resolve_edition_links(text, editions):
-    """Replace [link] / [Edition #N link] with known URLs. Unknown editions stay as-is."""
-    def sub_block(m):
-        url = editions.get(m.group(2))
-        return f"{m.group(1)}\n{url}" if url else m.group(0)
-
-    def sub_inline(m):
-        url = editions.get(m.group(1))
-        return url if url else m.group(0)
-
-    text = RE_EDITION_BLOCK.sub(sub_block, text)
-    text = RE_EDITION_INLINE.sub(sub_inline, text)
-    return text
 
 
 def log(*a):
@@ -165,11 +131,6 @@ def main():
 
     log(f"Telegram: bot token set={bool(BOT_TOKEN)}  chat_id={CHAT_ID[:3] if len(CHAT_ID)>=3 else '?'}...{CHAT_ID[-3:] if len(CHAT_ID)>=3 else '?'} (len={len(CHAT_ID)})")
 
-    editions = load_editions()
-    missing_urls = [k for k, v in sorted(editions.items(), key=lambda x: int(x[0]) if x[0].isdigit() else 0) if not v]
-    log(f"Edition registry: {len(editions)} entries, {sum(1 for v in editions.values() if v)} with URLs"
-        + (f" | missing URLs for editions: {', '.join('#'+e for e in missing_urls)}" if missing_urls else ""))
-
     posts = []
     for f in sorted(glob.glob("content/week-*.json")):
         posts += json.load(open(f, encoding="utf-8")).get("posts", [])
@@ -178,21 +139,8 @@ def main():
         key=lambda p: p["post_time"])
     log(f"{len(batch)} post(s) in batch: {[p['id'] for p in batch]}")
 
-    # If opted in, drop posts that are batch-scheduled natively (LinkedIn text
-    # posts loaded into the native scheduler on Sunday) so they don't double-ping.
-    pre_scheduled = [p for p in batch if is_schedulable(p)]
-    if SKIP_SCHEDULABLE and pre_scheduled:
-        log(f"SKIP_SCHEDULABLE on — {len(pre_scheduled)} natively-scheduled post(s) "
-            f"omitted from live tap: {[p['id'] for p in pre_scheduled]}")
-        batch = [p for p in batch if not is_schedulable(p)]
-
     if not batch:
-        if SKIP_SCHEDULABLE and pre_scheduled:
-            msg = (f"📅 EXCEL FLOW\nAll {len(pre_scheduled)} post(s) for the "
-                   f"{window.lower()} window today ({today}) are pre-scheduled "
-                   f"natively — nothing to tap. ✅")
-        else:
-            msg = f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} window today ({today})."
+        msg = f"📅 EXCEL FLOW\nNothing scheduled for the {window.lower()} window today ({today})."
         if dry_run:
             log(f"[DRY-RUN] Would send: {msg}")
             return
@@ -202,18 +150,11 @@ def main():
             sys.exit(1)
         return
 
-    for p in batch:
-        p["content"] = resolve_edition_links(p.get("content") or "", editions)
-        if p.get("first_comment"):
-            p["first_comment"] = resolve_edition_links(p["first_comment"], editions)
-
     flags = {p["id"]: qa(p) for p in batch}
 
     queue = []
     for p in batch:
         msgs = messages_for(p, flags[p["id"]])
-        if is_schedulable(p) and not SKIP_SCHEDULABLE and msgs:
-            msgs[0] = "📆 (schedulable — you can batch this in LinkedIn's scheduler)\n" + msgs[0]
         queue += msgs
     if len(batch) > 5:
         queue.append(f"📅 EXCEL FLOW\n⚠️ unusually large batch ({len(batch)} "

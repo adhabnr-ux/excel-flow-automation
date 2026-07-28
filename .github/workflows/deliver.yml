@@ -37,9 +37,6 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Validate content
-        run: python3 validate.py
-
       - name: Resolve window
         id: win
         run: |
